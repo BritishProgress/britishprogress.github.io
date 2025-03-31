@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Market Cap Force-Directed Bubble Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f9f9f9;
+      }
+      svg {
+        display: block;
+        margin: 0 auto;
+        background: #f9f9f9;
+      }
+      .tooltip {
+        position: absolute;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 8px;
+        pointer-events: none;
+        font-size: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+      h1 {
+        text-align: center;
+        margin: 20px 0 5px;
+        font-size: 24px;
+      }
+      .subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Market Capitalization: US vs EU Companies</h1>
+    <div class="subtitle">
+      Bubble size represents market capitalization in billions USD
+    </div>
+    <div id="chart"></div>
+
+    <script>
+      // Function to process CSV data into the required format
+      function processCSVData(csvContent) {
+        const rows = csvContent
+          .split('\n')
+          .slice(1) // Skip header row
+          .map((row) => {
+            const [name, ticker, index, sector, marketCap] = row.split(',');
+            // Skip rows with missing data
+            if (!name || !ticker || !marketCap) return null;
+
+            const capValue = parseFloat(marketCap) / 1e9; // Convert to billions
+
+            return {
+              name: name,
+              ticker: ticker,
+              sector: sector,
+              marketCap: capValue,
+              // Determine region (US or EU)
+              region: index === 'USA' ? 'US' : 'EU',
+              // Determine if it's a tech company
+              isTech:
+                sector &&
+                (sector.includes('Technology') ||
+                  sector.includes('Electronic technology')),
+            };
+          })
+          .filter((row) => row !== null && !isNaN(row.marketCap));
+
+        // Return all companies, sorted by market cap
+        return rows.sort((a, b) => b.marketCap - a.marketCap);
+      }
+
+      // Replace the hardcoded data with your CSV content
+      const csvContent = `Company_Name,Ticker,Index,Sector,Market_Cap_USD
+Apple Inc.,AAPL,USA,Electronic technology,3273315581952
+Microsoft Corporation,MSFT,USA,Technology services,2815991480320
+NVIDIA Corporation,NVDA,USA,Electronic technology,2675947864064
+"Amazon.com, Inc.",AMZN,USA,Retail trade,2042388676608
+Alphabet Inc.,GOOGL,USA,Technology services,1890897494016
+"Meta Platforms, Inc.",META,USA,Technology services,1461263007744
+Berkshire Hathaway Inc. New,BRK.B,USA,Finance,
+"Tesla, Inc.",TSLA,USA,Consumer durables,847713796096
+Broadcom Inc.,AVGO,USA,Electronic technology,795193769984
+Eli Lilly and Company,LLY,USA,Health technology,738604941312
+JP Morgan Chase & Co.,JPM,USA,Finance,679035338752
+Walmart Inc.,WMT,USA,Retail trade,682634772480
+Visa Inc.,V,USA,Commercial services,661361131520
+Exxon Mobil Corporation,XOM,USA,Energy minerals,510846992384
+Mastercard Incorporated,MA,USA,Finance,492878462976
+UnitedHealth Group Incorporated,UNH,USA,Health services,472027955200
+"Netflix, Inc.",NFLX,USA,Technology services,399460859904
+Oracle Corporation,ORCL,USA,Technology services,395031838720
+Costco Wholesale Corporation,COST,USA,Retail trade,412474343424
+Johnson & Johnson,JNJ,USA,Health technology,394516561920
+Procter & Gamble Company (The),PG,USA,Consumer non-durables,394005118976
+"Home Depot, Inc. (The)",HD,USA,Retail trade,356012556288
+AbbVie Inc.,ABBV,USA,Health technology,363153883136
+NOVO NORDISK B A/S,NOVO_B,Denmark,Health technology,305524220391.9129
+Bank of America Corporation,BAC,USA,Finance,313615515648
+SAP SE O.N.,SAP,Germany,Technology services,312832404071.8942
+LVMH,MC,France,Consumer non-durables,320240676478.0847
+Coca-Cola Company (The),KO,USA,Consumer non-durables,302842216448
+"T-Mobile US, Inc.",TMUS,USA,Communications,302481178624
+Chevron Corporation,CVX,USA,Energy minerals,292418060288
+HERMES INTL,RMS,France,Consumer non-durables,276597997966.6096
+ASML HOLDING,ASML,Netherlands,Electronic technology,272515768087.688
+"Salesforce, Inc.",CRM,USA,Technology services,259441164288
+"Cisco Systems, Inc.",CSCO,USA,Electronic technology,242118721536
+Wells Fargo & Company,WFC,USA,Finance,230814171136
+Philip Morris International Inc,PM,USA,Consumer non-durables,241252089856
+International Business Machines Corporation,IBM,USA,Technology services,226252423168
+ASTRAZENECA PLC,AZN,UK,Health technology,229790196274.06296
+GE Aerospace,GE,USA,Electronic technology,213188001792
+"Merck & Company, Inc.",MRK,USA,Health technology,225398571008
+McDonald's Corporation,MCD,USA,Consumer services,219403829248
+Abbott Laboratories,ABT,USA,Health technology,226883747840
+Linde plc,LIN,USA,Process industries,217118621696
+Palantir Technologies Inc.,PLTR,USA,Technology services,201349136384
+SHELL PLC,SHELL,Netherlands,Energy minerals,217604808490.81796
+HSBC HOLDINGS PLC,HSBA,UK,Finance,203836825442.62842
+"PepsiCo, Inc.",PEP,USA,Consumer non-durables,204723814400
+L'OREAL,OR,France,Consumer non-durables,200146789500.81985
+Morgan Stanley,MS,USA,Finance,186011156480
+AT&T Inc.,T,USA,Communications,202281123840
+American Express Company,AXP,USA,Finance,186130694144
+Accenture plc,ACN,USA,Technology services,190652383232
+Thermo Fisher Scientific Inc,TMO,USA,Health technology,188690857984
+SIEMENS AG NA O.N.,SIE,Germany,Producer manufacturing,185668305542.53232
+Verizon Communications Inc.,VZ,USA,Communications,189141827584
+"Intuitive Surgical, Inc.",ISRG,USA,Health technology,176213983232
+Walt Disney Company (The),DIS,USA,Consumer services,177289953280
+Blackstone Inc.,BX,USA,Finance,168309129216
+RTX Corporation,RTX,USA,Electronic technology,175858057216
+DT.TELEKOM AG NA,DTE,Germany,Communications,181904439517.64932
+"Goldman Sachs Group, Inc. (The)",GS,USA,Finance,168796274688
+"Advanced Micro Devices, Inc.",AMD,USA,Electronic technology,167265943552
+"ServiceNow, Inc.",NOW,USA,Technology services,164727078912
+QUALCOMM Incorporated,QCOM,USA,Electronic technology,168908324864
+Adobe Inc.,ADBE,USA,Technology services,164389601280
+Intuit Inc.,INTU,USA,Technology services,167435255808
+Texas Instruments Incorporated,TXN,USA,Electronic technology,160445841408
+Amgen Inc.,AMGN,USA,Health technology,164895080448
+"Caterpillar, Inc.",CAT,USA,Producer manufacturing,157569400832
+Progressive Corporation (The),PGR,USA,Finance,163477766144
+S&P Global Inc.,SPGI,USA,Commercial services,154111279104
+Booking Holdings Inc. Common Stock,BKNG,USA,Consumer services,152073519104
+INDUSTRIA DE DISENO TEXTIL S.A. INDITEX,ITX,Spain,Retail trade,155872671304.70563
+"Uber Technologies, Inc.",UBER,USA,Transportation,152139169792
+Boston Scientific Corporation,BSX,USA,Health technology,146960384000
+"BlackRock, Inc.",BLK,USA,Finance,146978013184
+Danaher Corporation,DHR,USA,Health technology,147275382784
+Charles Schwab Corporation (The),SCHW,USA,Finance,141113884672
+ALLIANZ SE NA O.N.,ALV,Germany,Finance,148507545975.66217
+AIRBUS,AIR,Germany,Electronic technology,143538862369.0498
+UNILEVER PLC,UNA,Netherlands,Consumer non-durables,146276505818.556
+"Pfizer, Inc.",PFE,USA,Health technology,142977253376
+Union Pacific Corporation,UNP,USA,Transportation,139131666432
+"NextEra Energy, Inc.",NEE,USA,Utilities,144917757952
+Comcast Corporation,CMCSA,USA,Consumer services,138460938240
+SCHNEIDER ELECTRIC SE,SU,France,Producer manufacturing,133715533688.1242
+Stryker Corporation,SYK,USA,Health technology,139125637120
+"Citigroup, Inc.",C,USA,Finance,132372316160
+Honeywell International Inc.,HON,USA,Electronic technology,136703959040
+SANOFI,SAN,France,Health technology,137078627869.55019
+ESSILORLUXOTTICA,EL,France,Health technology,133749302508.93886
+"Gilead Sciences, Inc.",GILD,USA,Health technology,139217682432
+"TJX Companies, Inc. (The)",TJX,USA,Retail trade,132886953984
+Boeing Company (The),BA,USA,Electronic technology,130399649792
+TOTALENERGIES,TTE,France,Energy minerals,142201471555.42017
+ConocoPhillips,COP,USA,Energy minerals,130253545472
+Deere & Company,DE,USA,Producer manufacturing,126291656704
+"Lowe's Companies, Inc.",LOW,USA,Retail trade,127848275968
+Vertex Pharmaceuticals Incorporated,VRTX,USA,Health technology,126517862400
+"Fiserv, Inc.",FI,USA,Finance,121311395840
+"Automatic Data Processing, Inc.",ADP,USA,Technology services,122398998528
+"Palo Alto Networks, Inc.",PANW,USA,Technology services,114384388096
+"Applied Materials, Inc.",AMAT,USA,Producer manufacturing,117852692480
+AB INBEV,ABI,Belgium,Consumer non-durables,121805263488.78152
+Bristol-Myers Squibb Company,BMY,USA,Health technology,122126295040
+Chubb Limited,CB,USA,Finance,118784696320
+"Marsh & McLennan Companies, Inc.",MMC,USA,Finance,119045242880
+SAFRAN,SAF,France,Electronic technology,111622526664.51395
+Medtronic plc.,MDT,USA,Health technology,112388980736
+"Eaton Corporation, PLC",ETN,USA,Producer manufacturing,107411308544
+Starbucks Corporation,SBUX,USA,Consumer services,111014445056
+AIR LIQUIDE,AI,France,Process industries,110280885912.5842
+BANCO SANTANDER S.A.,SAN,Spain,Finance,102960886233.21579
+RIO TINTO,RIO,UK,Non-energy minerals,100562618728.37592
+KKR & Co. Inc.,KKR,USA,Finance,105994993664
+Lockheed Martin Corporation,LMT,USA,Electronic technology,103920566272
+FERRARI,RACE,Italy,Consumer durables,77511457165.13506
+"Analog Devices, Inc.",ADI,USA,Electronic technology,99968917504
+"Prologis, Inc.",PLD,USA,Finance,102371688448
+ABB LTD,ABB,Sweden,Producer manufacturing,98525383456.45671
+PROSUS,PRX,Netherlands,Technology services,107379242756.31555
+"Arista Networks, Inc.",ANET,USA,Electronic technology,98291695616
+"Micron Technology, Inc.",MU,USA,Electronic technology,98837897216
+Intel Corporation,INTC,USA,Electronic technology,98334294016
+Intercontinental Exchange Inc.,ICE,USA,Finance,100382253056
+BNP PARIBAS ACT.A,BNP,France,Finance,96977310262.5194
+ACCIONES IBERDROLA,IBE,Spain,Utilities,101725245508.15744
+American Tower Corporation (REIT),AMT,USA,Finance,100765024256
+Southern Company (The),SO,USA,Utilities,99951378432
+"Altria Group, Inc.",MO,USA,Consumer non-durables,98311880704
+"Elevance Health, Inc.",ELV,USA,Health services,98216067072
+"Nike, Inc.",NKE,USA,Consumer non-durables,93614137344
+Lam Research Corporation,LRCX,USA,Producer manufacturing,93206552576
+Welltower Inc.,WELL,USA,Finance,98389475328
+"United Parcel Service, Inc.",UPS,USA,Transportation,92940361728
+INVESTOR AB SER. B,INVE_B,Sweden,Finance,93198985897.18118
+INTESA SANPAOLO,ISP,Italy,Finance,92735632280.90204
+AXA,CS,France,Finance,94223607547.20277
+CME Group Inc.,CME,USA,Finance,94499635200
+KLA Corporation,KLAC,USA,Electronic technology,89512681472
+RELX PLC,REL,UK,Commercial services,93100338855.10042
+RELX,REN,Netherlands,Commercial services,92953284131.5074
+"CrowdStrike Holdings, Inc.",CRWD,USA,Technology services,88517918720
+"Waste Management, Inc.",WM,USA,Industrial services,91650048000
+Duke Energy Corporation (Holding Company),DUK,USA,Utilities,92784205824
+BP,BP.,UK,Energy minerals,87545869280.4821
+BRITISH AMERICAN TOBACCO,BATS,UK,Consumer non-durables,90091364099.2211
+ROLLS ROYCE HOLDINGS,RR.,UK,Electronic technology,84189365420.82663
+GE Vernova Inc.,GEV,USA,Producer manufacturing,83578683392
+The Cigna Group,CI,USA,Health services,88120942592
+Sherwin-Williams Company (The),SHW,USA,Process industries,85450522624
+Arthur J. Gallagher & Co.,AJG,USA,Finance,87144267776
+Aon plc,AON,USA,Finance,85223186432
+"Mondelez International, Inc.",MDLZ,USA,Consumer non-durables,87597850624
+Moody's Corporation,MCO,USA,Commercial services,82997182464
+MUENCH.RUECKVERS.VNA O.N.,MUV2,Germany,Finance,83628467002.4188
+CVS Health Corporation,CVS,USA,Retail trade,84650115072
+"BANCO BILBAO VIZCAYA ARGENTARIA, S.A.",BBVA,Spain,Finance,79338229704.9006
+Cintas Corporation,CTAS,USA,Consumer services,82033614848
+McKesson Corporation,MCK,USA,Distribution services,83725287424
+"HCA Healthcare, Inc.",HCA,USA,Health services,84240818176
+3M Company,MMM,USA,Producer manufacturing,78114816000
+"Apollo Global Management, Inc. (New)",APO,USA,Finance,78132944896
+Parker-Hannifin Corporation,PH,USA,Electronic technology,77443129344
+"Equinix, Inc.",EQIX,USA,Finance,78157594624
+Amphenol Corporation,APH,USA,Electronic technology,80645808128
+"Airbnb, Inc.",ABNB,USA,Consumer services,74989527040
+"DoorDash, Inc.",DASH,USA,Technology services,76713730048
+Trane Technologies plc,TT,USA,Producer manufacturing,74464616448
+ENEL,ENEL,Italy,Utilities,82871126222.8349
+"O'Reilly Automotive, Inc.",ORLY,USA,Retail trade,80671039488
+ATLAS COPCO AB SER. B,ATCO_B,Sweden,Producer manufacturing,77117516528.22221
+ATLAS COPCO AB SER. A,ATCO_A,Sweden,Producer manufacturing,76875431978.72948
+GSK PLC,GSK,UK,Health technology,78338139964.10143
+Transdigm Group Inc.,TDG,USA,Electronic technology,77239705600
+"Fortinet, Inc.",FTNT,USA,Technology services,74282885120
+LONDON STOCK EXCHANGE GROUP,LSEG,UK,Technology services,78983183075.77528
+Illinois Tool Works Inc.,ITW,USA,Producer manufacturing,72302993408
+"Republic Services, Inc.",RSG,USA,Industrial services,74492461056
+Colgate-Palmolive Company,CL,USA,Consumer non-durables,75284815872
+"Williams Companies, Inc. (The)",WMB,USA,Industrial services,72252645376
+Northrop Grumman Corporation,NOC,USA,Electronic technology,74142572544
+General Dynamics Corporation,GD,USA,Electronic technology,72746049536
+"Cadence Design Systems, Inc.",CDNS,USA,Technology services,70413656064
+Zoetis Inc.,ZTS,USA,Health technology,73039355904
+"Motorola Solutions, Inc.",MSI,USA,Electronic technology,72282046464
+VINCI,DG,France,Industrial services,72101281272.83528
+"EOG Resources, Inc.",EOG,USA,Energy minerals,70121488384
+Ecolab Inc.,ECL,USA,Process industries,70769262592
+"PNC Financial Services Group, Inc. (The)",PNC,USA,Finance,68021514240
+"Synopsys, Inc.",SNPS,USA,Technology services,67715829760
+"Regeneron Pharmaceuticals, Inc.",REGN,USA,Health technology,69679382528
+"PayPal Holdings, Inc.",PYPL,USA,Commercial services,64449118208
+Capital One Financial Corporation,COF,USA,Finance,66171846656
+Marriott International,MAR,USA,Consumer services,65342472192
+U.S. Bancorp,USB,USA,Finance,65841500160
+"Chipotle Mexican Grill, Inc.",CMG,USA,Consumer services,67645022208
+Constellation Energy Corporation,CEG,USA,Utilities,64350744576
+Dell Technologies Inc.,DELL,USA,Electronic technology,64403746816
+"Workday, Inc.",WDAY,USA,Technology services,63438340096
+"Becton, Dickinson and Company",BDX,USA,Health technology,65323212800
+"Air Products and Chemicals, Inc.",APD,USA,Process industries,65023057920
+Emerson Electric Company,EMR,USA,Electronic technology,61262098432
+"Kinder Morgan, Inc.",KMI,USA,Industrial services,63037005824
+"ONEOK, Inc.",OKE,USA,Industrial services,61485002752
+ING GROEP N.V.,INGA,Netherlands,Finance,60706131987.53792
+"VOLVO, AB SER. B",VOLV_B,Sweden,Producer manufacturing,61308354588.96692
+"Roper Technologies, Inc.",ROP,USA,Technology services,62566797312
+RHEINMETALL AG,RHM,Germany,Electronic technology,61789777528.840195
+SIEMENS HEALTHINEERS AG,SHL,Germany,Health technology,61558249052.97101
+Mercedes-Benz Group AG,MBG,Germany,Consumer durables,59747478107.61933
+"AutoZone, Inc.",AZO,USA,Retail trade,63083929600
+MERCK KGAA O.N.,MRK,Germany,Health technology,60474217556.937935
+NATIONAL GRID,NG.,UK,Utilities,63923586811.61564
+The Bank of New York Mellon Corporation,BK,USA,Finance,59383631872
+"Charter Communications, Inc.",CHTR,USA,Consumer services,52406005760
+AFLAC Incorporated,AFL,USA,Finance,59930484736
+"Freeport-McMoRan, Inc.",FCX,USA,Non-energy minerals,55212224512
+BAE SYSTEMS,BA.,UK,Electronic technology,59230475373.26653
+"The Travelers Companies, Inc.",TRV,USA,Finance,59354865664
+Royal Caribbean Cruises Ltd.,RCL,USA,Consumer services,55865798656
+DIAGEO PLC ORD GBP0.28 101/108,DGE,UK,Consumer non-durables,59255260254.88957
+FedEx Corporation,FDX,USA,Transportation,57913479168
+Carrier Global Corporation,CARR,USA,Producer manufacturing,54716358656
+Schlumberger N.V.,SLB,USA,Industrial services,56950935552
+"CAIXABANK, S.A.",CABK,Spain,Finance,55669884121.728615
+"Autodesk, Inc.",ADSK,USA,Technology services,55727190016
+LLOYDS BANKING GROUP,LLOY,UK,Finance,57350328713.60594
+"MetLife, Inc.",MET,USA,Finance,53973700608
+BARCLAYS PLC,BARC,UK,Finance,55434878839.67201
+Hilton Worldwide Holdings Inc.,HLT,USA,Consumer services,54305148928
+CSX Corporation,CSX,USA,Transportation,54865072128
+VOLKSWAGEN AG VZO O.N.,VOW3,Germany,Consumer durables,54204449498.95905
+CREDIT AGRICOLE,ACA,France,Finance,55667435305.505585
+Monster Beverage Corporation,MNST,USA,Consumer non-durables,56306978816
+DASSAULT SYSTEMES,DSY,France,Technology services,52519189257.56007
+"American Electric Power Company, Inc.",AEP,USA,Utilities,57115357184
+Allstate Corporation (The),ALL,USA,Finance,54714617856
+THALES,HO,France,Electronic technology,55077031037.64726
+Howmet Aerospace Inc.,HWM,USA,Electronic technology,52527435776
+Johnson Controls International plc,JCI,USA,Producer manufacturing,52606480384
+Truist Financial Corporation,TFC,USA,Finance,52816076800
+GENERALI,G,Italy,Finance,53445986345.272934
+BAY.MOTOREN WERKE AG ST,BMW,Germany,Consumer durables,52296284873.60676
+"Paychex, Inc.",PAYX,USA,Technology services,54399647744
+COMPASS GROUP PLC,CPG,UK,Consumer services,56288061941.189835
+"Simon Property Group, Inc.",SPG,USA,Finance,61939806208
+Newmont Corporation,NEM,USA,Non-energy minerals,54198665216
+"Copart, Inc.",CPRT,USA,Retail trade,53280030720
+SAINT GOBAIN,SGO,France,Producer manufacturing,52566058357.91565
+Norfolk Southern Corporation,NSC,USA,Transportation,52204359680
+DEUTSCHE BOERSE AG,DB1,Germany,Finance,54060550492.02729
+"Cencora, Inc.",COR,USA,Distribution services,53311750144
+PACCAR Inc.,PCAR,USA,Producer manufacturing,50871451648
+NXP Semiconductors N.V.,NXPI,USA,Electronic technology,48185266176
+General Motors Company,GM,USA,Consumer durables,46446694400
+Phillips 66,PSX,USA,Energy minerals,49641308160
+DEUTSCHE POST AG,DHL,Germany,Transportation,51125879370.57669
+ADYEN,ADYEN,Netherlands,Finance,50188945425.853645
+"Digital Realty Trust, Inc.",DLR,USA,Finance,48708898816
+SIEMENS ENERGY AG,ENR,Germany,Producer manufacturing,49789406863.030685
+UNIVERSAL MUSIC GROUP N V,UMG,Netherlands,Commercial services,51504563069.15246
+"Ameriprise Financial, Inc.",AMP,USA,Finance,46203428864
+Public Storage,PSA,USA,Finance,51637207040
+Porsche AG Vz,P911,Germany,Consumer durables,48523311204.32906
+"American International Group, Inc. New",AIG,USA,Finance,49614508032
+Realty Income Corporation,O,USA,Finance,50483044352
+Hess Corporation,HES,USA,Energy minerals,48848867328
+DANONE,BN,France,Consumer non-durables,49408859934.72
+DEUTSCHE BANK AG NA O.N.,DBK,Germany,Finance,47239656823.50654
+INFINEON TECH.AG NA O.N.,IFX,Germany,Electronic technology,45139339977.34953
+BASF SE NA O.N.,BAS,Germany,Producer manufacturing,47507513842.94523
+NATWEST GROUP PLC,NWG,UK,Finance,47832859948.25318
+Target Corporation,TGT,USA,Retail trade,47220453376
+"W.W. Grainger, Inc.",GWW,USA,Distribution services,46968561664
+GLENCORE PLC,GLEN,UK,Distribution services,46676983196.19686
+Kroger Company (The),KR,USA,Retail trade,43901759488
+"Diamondback Energy, Inc.",FANG,USA,Energy minerals,45598531584
+DSV A/S,DSV,Denmark,Transportation,46374244476.91161
+3I GROUP,III,UK,Finance,46384049752.51784
+Occidental Petroleum Corporation,OXY,USA,Energy minerals,45889605632
+Marathon Petroleum Corporation,MPC,USA,Energy minerals,44891619328
+ENI,ENI,Italy,Energy minerals,47317934653.67921
+ENGIE,ENGI,France,Utilities,47448720072.28621
+Keurig Dr Pepper Inc.,KDP,USA,Consumer non-durables,45776744448
+Kimberly-Clark Corporation,KMB,USA,Consumer non-durables,46666756096
+STELLANTIS NV,STLAP,France,Consumer durables,34191895961.653248
+"Dominion Energy, Inc.",D,USA,Utilities,46854230016
+DBA Sempra,SRE,USA,Utilities,45426102272
+Fair Isaac Corporation,FICO,USA,Technology services,44858404864
+HEINEKEN,HEIA,Netherlands,Consumer non-durables,46568162135.82807
+RECKITT BENCKISER GROUP PLC,RKT,UK,Consumer non-durables,46358999791.94696
+NORDEA BANK ABP,NDA_FI,Finland,Finance,45159693544.07281
+Cummins Inc.,CMI,USA,Producer manufacturing,43171778560`;
+
+      const load = (width = 1000) => {
+        d3.select('#chart').html('');
+
+        const data = processCSVData(csvContent);
+
+        // Set up SVG dimensions
+        const height = 650;
+        const margin = { top: 10, right: 10, bottom: 10, left: 10 };
+
+        // Create SVG container
+        const svg = d3
+          .select('#chart')
+          .append('svg')
+          .attr('width', width)
+          .attr('height', height)
+          .attr('viewBox', [0, 0, width, height]);
+
+        // Draw background regions
+        svg
+          .append('rect')
+          .attr('x', 0)
+          .attr('y', 0)
+          .attr('width', width / 2)
+          .attr('height', height)
+          .attr('fill', '#f0f7ff')
+          .attr('opacity', 0.5);
+
+        svg
+          .append('rect')
+          .attr('x', width / 2)
+          .attr('y', 0)
+          .attr('width', width / 2)
+          .attr('height', height)
+          .attr('fill', '#f0fff7')
+          .attr('opacity', 0.5);
+
+        // Add region labels
+        svg
+          .append('text')
+          .attr('x', width / 4)
+          .attr('y', 40)
+          .attr('text-anchor', 'middle')
+          .attr('font-size', '20px')
+          .attr('font-weight', 'bold')
+          .text('United States');
+
+        svg
+          .append('text')
+          .attr('x', (3 * width) / 4)
+          .attr('y', 40)
+          .attr('text-anchor', 'middle')
+          .attr('font-size', '20px')
+          .attr('font-weight', 'bold')
+          .text('Europe');
+
+        // Color mapping
+        const colorMap = {
+          US_Tech: '#0066cc', // US tech: dark blue
+          US_NonTech: '#99ccff', // US non-tech: light blue
+          EU_Tech: '#009933', // EU tech: dark green
+          EU_NonTech: '#99cc99', // EU non-tech: light green
+        };
+
+        // Calculate color for each node
+        function getColor(d) {
+          const key = `${d.region}_${d.isTech ? 'Tech' : 'NonTech'}`;
+          return colorMap[key];
+        }
+
+        // Set up tooltip
+        const tooltip = d3
+          .select('body')
+          .append('div')
+          .attr('class', 'tooltip')
+          .style('opacity', 0);
+
+        // Create scale for bubble size
+        const radius = d3
+          .scaleSqrt()
+          .domain([0, d3.max(data, (d) => d.marketCap)])
+          .range([4, 50]);
+
+        // Define forces for the simulation
+        const simulation = d3
+          .forceSimulation(data)
+          // Gravity centers based on region and tech status
+          .force(
+            'x',
+            d3
+              .forceX()
+              .x((d) => {
+                if (d.region === 'US') {
+                  return d.isTech ? width * 0.2 : width * 0.35;
+                } else {
+                  return d.isTech ? width * 0.65 : width * 0.8;
+                }
+              })
+              .strength(0.2)
+          )
+          .force('y', d3.forceY(height / 2).strength(0.1))
+          // Prevent collision between bubbles
+          .force(
+            'collide',
+            d3
+              .forceCollide()
+              .radius((d) => radius(d.marketCap) + 2)
+              .strength(0.8)
+          )
+          // Add some charge to push bubbles apart
+          .force('charge', d3.forceManyBody().strength(-20));
+
+        // Create the node elements
+        const node = svg
+          .append('g')
+          .selectAll('circle')
+          .data(data)
+          .join('circle')
+          .attr('r', (d) => radius(d.marketCap))
+          .attr('fill', (d) => getColor(d))
+          .attr('stroke', 'white')
+          .attr('stroke-width', 1.5)
+          .on('mouseover', function (event, d) {
+            // Highlight the bubble
+            d3.select(this).attr('stroke', '#333').attr('stroke-width', 2);
+
+            // Show tooltip
+            tooltip.transition().duration(200).style('opacity', 0.9);
+
+            tooltip
+              .html(
+                `<strong>${d.name} (${d.ticker})</strong><br>` +
+                  `Sector: ${d.sector}<br>` +
+                  `Market Cap: $${d.marketCap.toFixed(2)} billion<br>` +
+                  `Region: ${
+                    d.region === 'US' ? 'United States' : 'Europe'
+                  }<br>` +
+                  `Category: ${d.isTech ? 'Technology' : 'Non-Technology'}`
+              )
+              .style('left', event.pageX + 10 + 'px')
+              .style('top', event.pageY - 28 + 'px');
+          })
+          .on('mouseout', function () {
+            // Reset highlighting
+            d3.select(this).attr('stroke', 'white').attr('stroke-width', 1.5);
+
+            // Hide tooltip
+            tooltip.transition().duration(500).style('opacity', 0);
+          })
+          .call(
+            d3
+              .drag()
+              .on('start', dragstarted)
+              .on('drag', dragged)
+              .on('end', dragended)
+          );
+
+        // Add labels for the largest companies
+        const topCompanies = data
+          .sort((a, b) => b.marketCap - a.marketCap)
+          .slice(0, 10);
+
+        const labels = svg
+          .append('g')
+          .selectAll('text')
+          .data(topCompanies)
+          .join('text')
+          .attr('font-size', '10px')
+          .attr('text-anchor', 'middle')
+          .attr('pointer-events', 'none')
+          .attr('dy', (d) => -radius(d.marketCap) - 5)
+          .text((d) => d.ticker);
+
+        // Add dividing line
+        svg
+          .append('line')
+          .attr('x1', width / 2)
+          .attr('y1', 60)
+          .attr('x2', width / 2)
+          .attr('y2', height - 60)
+          .attr('stroke', '#999')
+          .attr('stroke-dasharray', '4')
+          .attr('stroke-width', 1);
+
+        // Add legend
+        const legend = svg
+          .append('g')
+          .attr('transform', `translate(${width - 180}, ${height - 130})`);
+
+        // Legend background
+        legend
+          .append('rect')
+          .attr('width', 160)
+          .attr('height', 110)
+          .attr('fill', 'white')
+          .attr('opacity', 0.8)
+          .attr('rx', 5)
+          .attr('ry', 5);
+
+        // Add legend title
+        legend
+          .append('text')
+          .attr('x', 10)
+          .attr('y', 20)
+          .attr('font-weight', 'bold')
+          .text('Legend');
+
+        // Define legend items
+        const legendItems = [
+          { label: 'US Tech', color: colorMap.US_Tech },
+          { label: 'US Non-Tech', color: colorMap.US_NonTech },
+          { label: 'EU Tech', color: colorMap.EU_Tech },
+          { label: 'EU Non-Tech', color: colorMap.EU_NonTech },
+        ];
+
+        // Add legend items
+        legendItems.forEach((item, i) => {
+          legend
+            .append('circle')
+            .attr('cx', 20)
+            .attr('cy', i * 20 + 40)
+            .attr('r', 6)
+            .attr('fill', item.color);
+
+          legend
+            .append('text')
+            .attr('x', 35)
+            .attr('y', i * 20 + 43)
+            .attr('font-size', '12px')
+            .text(item.label);
+        });
+
+        // Add reference scale for bubble sizes
+        const sizeReference = svg
+          .append('g')
+          .attr('transform', `translate(20, ${height - 90})`);
+
+        // Background for size reference
+        sizeReference
+          .append('rect')
+          .attr('width', 210)
+          .attr('height', 70)
+          .attr('fill', 'white')
+          .attr('opacity', 0.8)
+          .attr('rx', 5)
+          .attr('ry', 5);
+
+        // Add title for reference
+        sizeReference
+          .append('text')
+          .attr('x', 10)
+          .attr('y', 20)
+          .attr('font-weight', 'bold')
+          .text('Market Cap Reference');
+
+        // Reference sizes
+        const refSizes = [100, 500, 2000];
+        refSizes.forEach((size, i) => {
+          const xPos = 35 + i * 60;
+
+          sizeReference
+            .append('circle')
+            .attr('cx', xPos)
+            .attr('cy', 45)
+            .attr('r', radius(size))
+            .attr('fill', '#aaa')
+            .attr('opacity', 0.5)
+            .attr('stroke', '#999')
+            .attr('stroke-width', 1);
+
+          sizeReference
+            .append('text')
+            .attr('x', xPos)
+            .attr('y', 65)
+            .attr('text-anchor', 'middle')
+            .attr('font-size', '10px')
+            .text(`$${size}B`);
+        });
+
+        // Update positions on tick
+        simulation.on('tick', () => {
+          node.attr('cx', (d) => d.x).attr('cy', (d) => d.y);
+
+          labels.attr('x', (d) => d.x).attr('y', (d) => d.y);
+        });
+
+        // Drag functions
+        function dragstarted(event, d) {
+          if (!event.active) simulation.alphaTarget(0.3).restart();
+          d.fx = d.x;
+          d.fy = d.y;
+        }
+
+        function dragged(event, d) {
+          d.fx = event.x;
+          d.fy = event.y;
+        }
+
+        function dragended(event, d) {
+          if (!event.active) simulation.alphaTarget(0);
+          d.fx = null;
+          d.fy = null;
+        }
+      };
+
+      load(1000);
+    </script>
+  </body>
+</html>

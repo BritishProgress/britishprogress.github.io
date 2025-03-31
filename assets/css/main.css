@@ -1829,7 +1829,7 @@ body.is-preload #footer {
 .circle:hover {
   /* color: #a6aeed; */
   /* filter: brightness(0) saturate(0%); */
-  content: url('../../images/percival-estate-logo-green-padding-circle.png');
+  content: url('../../images/cbp-logo-icon-charcoal-beige-1024px-circle.png');
 }
 
 /* File */
@@ -1860,6 +1860,23 @@ body.is-preload #footer {
 /* GitHub */
 .fa-github:hover {
   color: #000408;
+}
+
+/* Bluesky */
+.fa-bluesky:hover {
+  color: #208bfe;
+}
+
+/* LinkedIn */
+.fa-linkedin:hover {
+  color: #0e76a8;
+}
+
+/* Substack */
+.fa-substack svg:hover {
+  /* color: #ff6718; */
+  filter: invert(48%) sepia(64%) saturate(2526%) hue-rotate(349deg)
+    brightness(100%) contrast(102%);
 }
 
 /* Glow */
