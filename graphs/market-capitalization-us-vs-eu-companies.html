@@ -41,6 +41,48 @@
       }
     </style>
   </head>
+
+  <script>
+    // Function to handle the width and call load
+    function handleWidth(width) {
+      if (typeof load === 'function') {
+        load(width);
+      }
+    }
+
+    // Function to send height to parent
+    function sendHeight() {
+      const height = document.documentElement.scrollHeight;
+      window.parent.postMessage(
+        {
+          type: 'setHeight',
+          height: height,
+        },
+        '*'
+      );
+    }
+
+    // Listen for message from parent
+    window.addEventListener('message', (event) => {
+      if (event.data.type === 'parentWidth') {
+        handleWidth(event.data.width);
+      }
+    });
+
+    // Signal to parent that iframe is ready
+    window.parent.postMessage({ type: 'iframeReady' }, '*');
+
+    // Send initial height after load
+    window.addEventListener('load', sendHeight);
+
+    // Optional: Send height on any content changes
+    const observer = new MutationObserver(sendHeight);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  </script>
+
   <body>
     <h1>Market Capitalization: US vs EU Companies</h1>
     <div class="subtitle">
