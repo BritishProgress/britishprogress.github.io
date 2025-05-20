@@ -2501,7 +2501,8 @@
         // Function to set correct dimensions
         function getDimensions() {
           const width = document.documentElement.scrollWidth;
-          const height = document.documentElement.scrollHeight;
+          //const height = document.documentElement.scrollHeight;
+          const height = document.body.scrollHeight;
           const id = window.location.href;
           return {
             width: width,
