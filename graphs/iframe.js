@@ -1,90 +1,158 @@
 (function () {
-  // Send message
   function safePostMessage(message) {
     try {
-      window.parent.postMessage(message, '*');
-      //console.log("Message sent:", message.type);
+      window.parent.postMessage(message, "*");
     } catch (e) {
-      console.error('PostMessage failed:', e);
+      console.error("PostMessage failed:", e);
     }
   }
 
   function handleWidth(width) {
-    if (typeof load === 'function') {
+    if (typeof load === "function") {
       load(width);
     }
   }
 
-  function sendHeight() {
-    const height = document.documentElement.scrollHeight;
-    safePostMessage({
-      type: 'setHeight',
-      height: height,
+  function getFullHeight({ forceBase = false } = {}) {
+    const baseBottom =
+      document.documentElement.getBoundingClientRect().bottom + window.scrollY;
+
+    if (forceBase) {
+      return {
+        baseBottom,
+        scrollBottom: baseBottom,
+        floatingBottom: 0,
+        fullHeight: baseBottom,
+      };
+    }
+
+    const scrollBottom = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight
+    );
+
+    // Approximate floating elements (like tooltips)
+    const floatingElems = [...document.querySelectorAll("*")].filter((el) => {
+      const style = getComputedStyle(el);
+      return style.position === "absolute" || style.position === "fixed";
     });
+
+    const floatingBottom =
+      floatingElems.reduce((max, el) => {
+        const rect = el.getBoundingClientRect();
+        const bottom = rect.bottom + window.scrollY;
+        return Math.max(max, bottom);
+      }, 0) - baseBottom;
+
+    const fullHeight = Math.max(baseBottom + floatingBottom, scrollBottom);
+
+    return { baseBottom, scrollBottom, floatingBottom, fullHeight };
   }
 
-  // Function to handle styles
-  function fixSvgSizes() {
-    document.querySelectorAll('svg').forEach((svg) => {
-      svg.style.width = '100%';
-      svg.style.maxWidth = '100%';
-      svg.removeAttribute('width');
-      svg.style.height = 'auto';
-    });
-  }
-
-  // Function to set correct dimensions
-  function getDimensions() {
+  function getDimensions(options = {}) {
+    const { fullHeight, baseBottom } = getFullHeight(options);
     const width = document.documentElement.scrollWidth;
-    //const height = document.documentElement.scrollHeight;
-    const height = document.body.scrollHeight;
     const id = window.location.href;
+
     return {
       width: width,
-      height: height,
-      aspectRatio: width / height,
+      height: fullHeight,
+      baseHeight: baseBottom,
+      aspectRatio: width / fullHeight,
       id: id,
     };
   }
-  // Send the inital data
-  function sendData() {
-    const dimensions = getDimensions();
 
+  function sendData(options = {}) {
+    const dimensions = getDimensions(options);
     window.parent.postMessage(
       {
-        type: 'iframeData',
+        type: "iframeData",
         data: {
           dimensions: dimensions,
           ready: true,
         },
       },
-      '*'
+      "*"
     );
   }
 
-  // Send the height when we have width
+  function sendHeightDebounced() {
+    clearTimeout(sendHeightDebounced._t);
+    sendHeightDebounced._t = setTimeout(() => sendData(), 100);
+  }
+
   function messageHandler(event) {
-    if (event.data && event.data.type === 'parentWidth') {
+    if (event.data && event.data.type === "parentWidth") {
       handleWidth(event.data.width);
       sendData();
     }
   }
 
-  // Init
-  document.addEventListener('DOMContentLoaded', function () {
-    // Register:
-    window.addEventListener('message', messageHandler);
+  function fixSvgSizes() {
+    document.querySelectorAll("svg").forEach((svg) => {
+      svg.style.width = "100%";
+      svg.style.maxWidth = "100%";
+      svg.removeAttribute("width");
+      svg.style.height = "auto";
+    });
+  }
 
-    // Send message
-    safePostMessage({ type: 'iframeReady' });
+  // Hide scroll bar
+  function hideScrollBar() {
+    const style = document.createElement("style");
+    style.textContent = `
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      * {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+    `;
+    document.head.appendChild(style);
+  }
 
-    // Send safely the initial height
+  function observeHoverActivity() {
+    let lastHoverTriggerTime = 0;
+
+    function maybeTriggerHeightUpdate() {
+      const now = Date.now();
+      if (now - lastHoverTriggerTime > 100) {
+        lastHoverTriggerTime = now;
+        sendHeightDebounced();
+      }
+    }
+
+    document.addEventListener("mousemove", maybeTriggerHeightUpdate);
+    document.addEventListener("mouseenter", maybeTriggerHeightUpdate, true);
+    document.addEventListener(
+      "mouseleave",
+      () => {
+        setTimeout(() => {
+          sendData({ forceBase: true });
+        }, 300); // Send only base height when tooltip disappears
+      },
+      true
+    );
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    window.addEventListener("message", messageHandler);
+    safePostMessage({ type: "iframeReady" });
+
     setTimeout(sendData, 700);
+    observeHoverActivity();
   });
 
-  // Watch changes
+  document.body.addEventListener("mouseout", (event) => {
+    if (!event.relatedTarget || !document.body.contains(event.relatedTarget)) {
+      sendData({ forceBase: true });
+    }
+  });
+
   new MutationObserver(function () {
-    sendData();
+    sendHeightDebounced();
   }).observe(document.body, {
     childList: true,
     subtree: true,
@@ -92,8 +160,9 @@
     characterData: true,
   });
 
-  window.addEventListener('load', function () {
+  window.addEventListener("load", function () {
     fixSvgSizes();
+    hideScrollBar();
     sendData();
   });
 })();
