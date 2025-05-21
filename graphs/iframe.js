@@ -87,6 +87,19 @@
       handleWidth(event.data.width);
       sendData();
     }
+
+    if (event.data.type === "scrollToTop") {
+      window.scrollTo(0, 0);
+
+      const floatingElems = [...document.querySelectorAll("*")].filter((el) => {
+        const style = getComputedStyle(el);
+        return style.position === "absolute" || style.position === "fixed";
+      });
+
+      floatingElems.forEach((el) => {
+        el.style.opacity = "0";
+      });
+    }
   }
 
   function fixSvgSizes() {
