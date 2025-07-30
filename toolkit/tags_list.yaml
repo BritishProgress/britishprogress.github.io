@@ -1,0 +1,120 @@
+tags:
+  # Policy objectives that can be met by tools
+  objectives:
+    - tag: increase_business_rd_investment
+      name: "Increase business R&D investment"
+    - tag: support_sme_innovation
+      name: "Support SME innovation"
+    - tag: support_collaborative_rd
+      name: "Support collaborative R&D"
+    - tag: support_growth_driving_sectors
+      name: "Support growth-driving sectors"
+    - tag: strengthen_economic_security
+      name: "Strengthen economic security"
+    - tag: accelerate_net_zero_innovation
+      name: "Accelerate net zero innovation"
+    - tag: drive_regional_economic_growth
+      name: "Drive regional economic growth"
+    - tag: develop_innovation_clusters
+      name: "Develop innovation clusters"
+    - tag: support_early_stage_research
+      name: "Support early-stage research"
+    - tag: support_applied_rd_commercialisation
+      name: "Support applied R&D and commercialisation"
+    - tag: create_markets_for_innovation
+      name: "Create markets for innovation"
+    - tag: solve_government_challenges
+      name: "Solve government challenges"
+    - tag: support_adoption_new_technologies
+      name: "Support adoption of new technologies"
+    - tag: increase_high_skilled_talent_supply
+      name: "Increase high-skilled talent supply"
+
+  # Innovation stage tags
+  innovation_stage:
+    - tag: early_stage
+      name: "Early Stage"
+    - tag: applied_research
+      name: "Applied Research"
+    - tag: development
+      name: "Development"
+    - tag: demonstration
+      name: "Demonstration"
+    - tag: deployment
+      name: "Deployment"
+
+  # Sector tags
+  sectors:
+    - tag: cross_sector
+      name: "Cross-Sector"
+    - tag: manufacturing
+      name: "Manufacturing"
+    - tag: ict
+      name: "ICT"
+    - tag: life_sciences
+      name: "Life Sciences"
+    - tag: aerospace
+      name: "Aerospace"
+    - tag: automotive
+      name: "Automotive"
+    - tag: energy
+      name: "Energy"
+    - tag: professional_services
+      name: "Professional Services"
+
+  # Delivery mechanism tags
+  delivery_mechanism:
+    - tag: tax_incentive
+      name: "Tax incentive"
+    - tag: direct_grant
+      name: "Direct R&D grant"
+    - tag: collaborative_grant
+      name: "Collaborative R&D grant with co-investment"
+    - tag: challenge_grant
+      name: "Challenge- or mission-led grant"
+    - tag: place_based_grant
+      name: "Regional/cluster-focused grant"
+    - tag: innovation_procurement
+      name: "Government procurement as early customer"
+    - tag: innovation_prize
+      name: "Prizes and other inducements"
+    - tag: market_commitment
+      name: "Commitment to future purchase"
+    - tag: immigration_scheme
+      name: "Visas and immigration routes"
+    - tag: automatic_entitlement
+      name: "Automatic entitlement"
+    - tag: innovation_loan
+      name: "Innovation loan"
+    - tag: innovation_voucher
+      name: "Innovation voucher"
+
+  # Targeting tags
+  targeting:
+    - tag: broad_based
+      name: "Broad-Based"
+    - tag: sector_specific
+      name: "Sector-Specific"
+    - tag: technology_specific
+      name: "Technology-Specific"
+    - tag: regional
+      name: "Regional"
+    - tag: firm_size
+      name: "Firm Size"
+    - tag: business_focused
+      name: "Business-Focused"
+    - tag: academic_focused
+      name: "Academic-Focused"
+
+  # Timeline tags
+  timeline:
+    - tag: immediate_cash_flow
+      name: "Immediate Cash Flow"
+    - tag: short_term_outcomes
+      name: "Short-Term Outcomes"
+    - tag: long_term_innovation
+      name: "Long-Term Innovation"
+    - tag: fast_implementation
+      name: "Fast Implementation"
+    - tag: slow_implementation
+      name: "Slow Implementation" 

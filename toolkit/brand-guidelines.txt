@@ -1,0 +1,9 @@
+#FDF9E9 - Beige
+#81F494 - Bright Green 
+#0B4938 - Dark Green
+#80B7F4 - Light Blue
+#093D77 - Dark Blue
+#283131 - Charcoal
+#FE9F1C - Orange
+#FAC2C2 - Light Red
+#B3063E - Deep Red

@@ -1,0 +1,751 @@
+tools:
+  - name: "R&D Tax Reliefs"
+    id: "rd_tax_reliefs"
+    overall_assessment: >
+      Broad-based tool – Continue use as part of the UK's broad based innovation strategy, as they are excellent for general business R&D stimulus. Expansion is not warranted as they are poor for strategic targeting which is where efforts are needed in the UK.
+    how_it_works:
+      description: >
+        By reducing the effective cost of R&D through tax relief for companies, the tool seeks to unlock additional private sector investment in R&D, particularly encouraging businesses that might otherwise underinvest. In the UK, companies submit documentation to [term:HMRC] detailing their qualifying R&D expenditure and can claim relief through their regular tax returns.
+      mechanism: >
+        Companies can claim a taxable credit at 20% under the Research and Development Expenditure Credit (RDEC) scheme. Loss-making R&D-intensive [term:SMEs] can access Enhanced R&D Intensive Support (ERIS) with an enhanced deduction of 86% and payable tax credit up to 14.5%.
+      complexity: "Low"
+      complexity_details: >
+        Operates through existing tax infrastructure, with administrative costs pushed to beneficiaries.
+      flexibility: "Moderate"
+      flexibility_details: >
+        Tax changes can be introduced at fiscal events, but major changes can prove controversial without adequate consultation and go against desire for policy stability.
+    effectiveness_and_uk_impact:
+      evidence_summary: >
+        R&D tax reliefs have been subjected to multiple national and international studies and evaluations.
+      what_works:
+        - "Delivers impressive [term:leverage]; in the UK, £7.5 billion in relief generated an estimated £46.7 billion in R&D spending in 2022-23."
+        - "Strong evidence of [term:additionality] in the UK: RDEC demonstrates £2.40-£2.70 of additional R&D per £1 of public money, while the SME scheme shows £0.60-£1.28 per £1."
+        - "Low administrative complexity since it operates through the UK's existing tax infrastructure via HMRC."
+        - "Provides fast cash delivery within months."
+      what_doesnt_work:
+        - "Limited strategic targeting capability, making it unsuitable when specific technologies or sectors need priority support."
+        - "Moderate fraud risk, with an estimated £1 billion lost in the UK system in 2020-21, though mitigation measures have been introduced."
+        - "Fast cash delivery but slow economic impact, with broader benefits like productivity gains emerging over years."
+      time_to_impact: >
+        Immediate cash flow benefits, long-term economic impact over 3-5 years.
+    targetability:
+      overall_assessment: >
+        Poor targeting tool - broad-based by design.
+      sectoral:
+        level: "Low"
+        details: "Broad eligibility across all sectors."
+      technological:
+        level: "Low"
+        details: "Cannot target specific technologies or innovation priorities."
+      regional:
+        level: "Low"
+        details: "No geographic differentiation in rates or eligibility."
+      by_firm_type:
+        level: "Moderate"
+        details: "Separate schemes for SMEs vs larger companies (ERIS vs RDEC)."
+    economic_analysis: >
+      This tool is designed to correct two fundamental market failures in innovation. The first is the *appropriability problem*, where firms cannot capture the full financial value of their own R&D because the knowledge created inevitably *spills over* to benefit competitors and the wider economy, leading to underinvestment. The second is information asymmetry, which recognises that firms have superior knowledge about their own technological and commercial opportunities compared to the government.
+
+
+      By reducing the effective cost of R&D, tax reliefs directly address the appropriability problem by allowing firms to keep a larger share of the returns from their investment. This mechanism respects information asymmetry by amplifying existing market signals and relying on firms' own judgement, rather than having the government attempt to pick specific companies' R&D activities to support. However, this market-led approach creates inherent limitations when strategic coordination is required or when significant positive externalities concentrate in areas with limited commercial incentives – such as basic research, infrastructure development, or technologies addressing climate change – which require more targeted intervention mechanisms capable of directing resources toward socially optimal outcomes regardless of immediate commercial viability.
+    cbp_view_recommendations_for_uk: >
+      R&D tax reliefs are a core part of UK innovation policy and should be maintained for broad-based stimulus. With over two-thirds of UK government support to business R&D coming from these reliefs, a case could be made to restructure them or repurpose some of the budget for more targeted outcomes. However, they are poorly suited to incentivise the strategic direction of technological capabilities or regional rebalancing. A drastic reduction of the relief would be unhelpfully destabilising to our business community who have recently had to get to grips with changes and have been crying out for policy stability.
+    further_reading:
+      - title: "Research and Development Tax Credits Statistics: September 2024"
+        url: "https://www.gov.uk/government/statistics/corporate-tax-research-and-development-tax-credit/research-and-development-tax-credits-statistics-september-2024#key-points"
+      - title: "HMRC Research Report 598: R&D tax relief for SMEs"
+        url: "https://assets.publishing.service.gov.uk/media/5fae77c18fa8f55debcc5fd4/HMRC_Research_Report_598_R-and-D_tax_relief_for_SMEs.pdf"
+        author: "Devanani et al, 2019"
+    tags:
+      objectives:
+        - increase_business_rd_investment
+        - support_sme_innovation
+      innovation_stage:
+        - early_stage
+        - applied_research
+        - development
+        - demonstration
+        - deployment
+      sectors:
+        - cross_sector
+      delivery_mechanism:
+        - tax_incentive
+      targeting:
+        - broad_based
+        - business_focused
+      timeline:
+        - immediate_cash_flow
+        - long_term_innovation
+
+  - name: "Innovation Inducement Prizes"
+    id: "innovation_prizes"
+    overall_assessment: >
+      Precise but narrow – best suited for focused technical challenges with clear success metrics.
+    how_it_works:
+      description: >
+        Monetary prizes against clearly defined success criteria are offered, entrants fund their own R&D efforts and are awarded the prize only if they deliver on the success criteria. This tool should unlock solutions in situations where the desired end goal is clear but the development path is uncertain.
+      mechanism: >
+        The prospect of a monetary prize encourages organisations to invest in R&D. Success criteria could reward innovators for developing the best innovation in comparison to other innovators, for achieving a broad technical goal, or meeting precise specifications of a target product. Prizes can be coupled to seed-funding (small grants), milestone payments and a wider “challenge”.
+      complexity: "High"
+      complexity_details: >
+        Requires specialist technical assessors, extensive outreach and communications, often staged payment systems.
+      flexibility: "High"
+      flexibility_details: >
+        Once launched, prize terms are difficult to alter without undermining credibility, but new prizes can be designed to respond to emerging challenges.
+    effectiveness_and_uk_impact:
+      evidence_summary: >
+        The evidence base for effectiveness remains thin, making it difficult to predict outcomes or optimise design.
+      what_works:
+        - "Government only pays for successful outcomes, eliminating the risk of funding failed projects."
+        - "Can attract unconventional innovators and generate significant publicity for important challenges, as seen with the UK's Longitude and Manchester Prizes."
+        - "[term:Leverage] can reach 10:1 in large prizes as participants invest their own resources."
+        - "Most effective around [term:TRL] 3, where technical risk is high and the ideal innovator is unknown."
+      what_doesnt_work:
+        - "Prize design and evaluation processes are complex and resource-intensive, a key finding from UK experience."
+        - "Risk of duplication as multiple teams work on similar approaches without coordination."
+      time_to_impact: >
+        Likely to vary greatly based on prize design, but descriptive evidence suggests that effects may appear after around one year.
+    targetability:
+      overall_assessment: >
+        Excellent targeting for specific technical goals.
+      sectoral:
+        level: "High"
+        details: "Can target any sector by choice of prize theme."
+      technological:
+        level: "High"
+        details: "Success criteria can pinpoint a single specific technical goal."
+      regional:
+        level: "Low"
+        details: "The geographic location of winners is difficult to steer or predict."
+      by_firm_type:
+        level: "Low"
+        details: "Approach is intended to create a level playing field for established and previously untested innovators alike."
+    economic_analysis: >
+      Prizes address a specific type of coordination failure. This situation arises when a funding agency, like the government, has a clear view of a problem that needs solving but lacks information on the best technical path or which organisation is best equipped to find the solution.
+
+
+      Based on contest theory, prizes incentivise multiple teams to invest their own resources in a competition for a final reward. This eliminates the *moral hazard* (where an actor takes on more risk because another bears the cost) that can be present in grants, as the government only pays for a successful outcome. However, this competitive approach creates a risk of socially inefficient duplication of research effort, which requires careful prize design to manage.
+    cbp_view_recommendations_for_uk: >
+      Innovation inducement prizes are most suitable when the goal is known but the optimal technological path and innovator are unknown. This is likely to be common around TRL 3. Prizes are powerful for drawing in non-traditional innovators, but this effect is likely to be greater when upfront R&D costs are relatively low, and the technical problem is currently of low salience, making publicity more likely to attract new innovators.
+    further_reading:
+      - title: "Inventing Prizes: A Historical Perspective on Innovation Awards and Technology Policy"
+        url: "https://www.cambridge.org/core/journals/business-history-review/article/inventing-prizes-a-historical-perspective-on-innovation-awards-and-technology-policy/9FAAB2D234C5C9CFB72E9C0642C60772"
+        author: "Khan, BZ., 2015"
+      - title: "The Impact of Innovation Inducement Prizes"
+        url: "https://media.nesta.org.uk/documents/impact_of_innovation_inducement_prizes.pdf"
+        author: "NESTA"
+      - title: "Challenge Prizes Landscape Review"
+        url: "https://media.nesta.org.uk/documents/challenge_prizes_landscape_review.pdf"
+        author: "NESTA"
+      - title: "Review of Innovation Prizes"
+        url: "https://innovationcaucus.co.uk/app/uploads/2023/11/IC-Prizes-Report_Graves_Final_v3.pdf"
+        author: "Graves & Vorley, Innovation Caucus"
+    tags:
+      objectives:
+        - solve_government_challenges
+        - support_early_stage_research
+        - create_markets_for_innovation
+      innovation_stage:
+        - early_stage
+        - applied_research
+      sectors:
+        - cross_sector
+      delivery_mechanism:
+        - innovation_prize
+      targeting:
+        - technology_specific
+        - business_focused
+        - academic_focused
+      timeline:
+        - long_term_innovation
+
+  - name: "Advance Market Commitments"
+    id: "advance_market_commitments"
+    overall_assessment: >
+      Market-making tool – powerful for creating new markets but capital-intensive and requires long-term commitment.
+    how_it_works:
+      description: >
+        An upfront commitment to purchase or subsidise a product that does not yet exist and meets a highly specified criteria, reducing demand uncertainty and encouraging private investment in R&D and scale-up.
+      mechanism: >
+        The commitment provides a guaranteed market for innovations that meet predetermined criteria, with payment typically contingent on delivery of products meeting agreed specifications. The government can either make this commitment independently, participate in a wider commitment, or co-ordinate a wider commitment, which could involve the private sector, the philanthropic sector and foreign governments.
+      complexity: "High"
+      complexity_details: >
+        Requires detailed technical specification development and ongoing monitoring.
+      flexibility: "Low"
+      flexibility_details: >
+        Commitments must remain credible and stable over many years to provide effective investment signals.
+    effectiveness_and_uk_impact:
+      evidence_summary: >
+        Little empirical evidence on causal effects. Main insights available are drawn from theoretical considerations.
+      what_works:
+        - "Insights from economic theory suggest AMCs are likely to be most effective at [term:TRL] 3-5, where technology is sufficiently advanced for precise product definition to be feasible, but not sufficiently advanced for an ideal innovator to be identified."
+      what_doesnt_work:
+        - "Design complexity is high, requiring detailed technical specifications and market analysis."
+        - "Vulnerable to industry [term:capture] if incumbent players unduly influence specification setting."
+      time_to_impact: >
+        Typically extends beyond a single parliamentary term, depending on starting TRL and required scale-up. Long-term nature creates challenges for political sustainability.
+    targetability:
+      overall_assessment: >
+        Excellent for precise targeting but limited geographic control.
+      sectoral:
+        level: "High"
+        details: "Can be targeted to any sector. To date most used in life sciences, net zero technologies, and defence applications."
+      technological:
+        level: "High"
+        details: "AMCs can provide precise technical specifications and performance requirements."
+      regional:
+        level: "Low"
+        details: "Difficult to control where production and innovation activities locate."
+      by_firm_type:
+        level: "Low"
+        details: "Larger firms are typically better positioned to deliver at the scale required by government commitments."
+    economic_analysis: >
+      This tool is an extension of a government's procurement strategy to address demand-side market failures, creating guaranteed markets for innovations that meet specific public sector requirements. The mechanism proves most effective when agencies possess clear operational needs for particular technologies but existing commercial solutions prove inadequate, even when underlying technical feasibility appears established.
+
+
+      By establishing credible, legally binding commitments to purchase products meeting detailed technical specifications, AMCs transform government procurement requirements into innovation incentives. This guaranteed demand enables private actors to justify the substantial fixed costs required for commercialisation, helping viable innovations cross the "valley of death" between prototype development and large-scale market deployment. While the primary justification centres on securing government access to needed technologies, the mechanism generates secondary benefits by creating pathways for broader commercial application of innovations that might otherwise remain underdeveloped.
+    cbp_view_recommendations_for_uk: >
+      Economic theory suggests AMCs are best suited to products characterized by high demand uncertainty, high upfront production costs and few prospective buyers. AMCs are likely to be most effective where the ideal innovator and producer are unknown, and the social benefits of the product show "network effects", where a greater volume of production increases the social benefit derived from each unit. Finally, AMCs are best suited to TRLs 3-5, where social value can be estimated and a "target product profile" can be clearly defined with low risk of industry capture.
+    further_reading: 
+      - title: "How to start an advance market commitment"
+        url: "https://worksinprogress.co/issue/how-to-start-an-advance-market-commitment/"
+        author: "Nan Ransohoff, 2024"
+    tags:
+      objectives:
+        - create_markets_for_innovation
+        - support_applied_rd_commercialisation
+        - solve_government_challenges
+      innovation_stage:
+        - applied_research
+        - development
+        - demonstration
+        - deployment
+      sectors:
+        - cross_sector
+      delivery_mechanism:
+        - market_commitment
+      targeting:
+        - technology_specific
+        - business_focused
+      timeline:
+        - long_term_innovation
+
+  - name: "Regulatory Sandboxes"
+    id: "regulatory_sandboxes"
+    overall_assessment: >
+      Flexible tool – supports regulatory innovation and reduces regulatory costs for innovative firms. It works best when the regulator has sufficient capacity, is transparent, and aims to spread benefits to non-participating firms.
+    how_it_works:
+      description: >
+        Sector regulators invite cohorts of innovators into “sandboxes” to pilot new products, services or business models with live customers for a fixed period. Each firm operates under bespoke regulatory relief, such as tailored derogations, no-action letters or modified licence conditions agreed case by case, with entry criteria, consumer-protection safeguards and data-sharing obligations set beforehand and enforced through close supervision. When the trial ends, firms must either move into the full regulatory regime or exit, and regulators use the lessons learned to refine permanent rules and future market approvals.
+      mechanism: >
+        Regulators provide bespoke, temporary relief to a cohort of innovators, allowing them to test new products or services with live customers in a controlled environment. The insights gained are then used by the regulators to inform and refine permanent rules.
+      complexity: "High"
+      complexity_details: >
+        Designing transparent eligibility rules and appropriate consumer safeguards needs specialist expertise.
+      flexibility: "High"
+      flexibility_details: >
+        Cohort size, duration, and regulatory relief conditions can be adjusted between rounds, and sandbox lessons can feed quickly into wider rule changes.
+    effectiveness_and_uk_impact:
+      evidence_summary: >
+        There is little causal evidence available on the effects of regulatory sandboxes.
+      what_works:
+        - "Involving regulators, and not just government departments, may be important for [term:spillover] benefits to the regulators."
+        - "Transparent reporting on progress can ensure wider benefits to firms that do not enter the sandbox by reducing regulatory uncertainty."
+        - "Avoiding pre-specification of regulatory derogations may increase benefits for innovation."
+        - "Using transparent and objective criteria for access and explaining rejections may help avoid negative effects on competition."
+        - "Requiring a clear statement that sandbox entry is not a regulatory recommendation to consumers may limit unfair advantages to entrants."
+        - "Sandboxes should be tailored carefully to the specific sector or technology."
+      what_doesnt_work:
+        - "Poor transparency in reporting can lead to unfair disadvantages for firms that do not enter the sandbox."
+        - "The tool is vulnerable to regulatory [term:capture] by participating firms."
+        - "High costs can divert resources from other regulator functions."
+      time_to_impact: >
+        May vary by sector and sandbox design, but evidence from a UK FinTech sandbox shows positive impacts for capital raised within one quarter and for patenting within two years.
+    targetability:
+      overall_assessment: >
+        Excellent for targeting specific sectors, technologies, and firm types, but with poor regional control.
+      sectoral:
+        level: "High"
+        details: "Targeted sandboxes in the UK already exist for aviation, fintech and energy."
+      technological:
+        level: "High"
+        details: "Targeted sandboxes in the UK already exist for cell-cultured meat and “AI as a medical device”."
+      regional:
+        level: "Low"
+        details: "Sandboxes are run by national regulators, so the geographic location of innovation is difficult to direct."
+      by_firm_type:
+        level: "High"
+        details: "Regulators can choose to prioritise access for start-ups and [term:SMEs], which may find it more difficult to bear regulatory costs."
+    economic_analysis: >
+      Sandboxes address information inefficiencies within regulatory systems rather than traditional market failures. The core problem they solve is *regulatory lag*, where the rules and processes for approving new products have not kept pace with the speed of technological innovation. This lag creates uncertainty and high transaction costs for firms, blocking or delaying new technologies from reaching the market.
+
+
+      The sandbox functions as a controlled environment where firms and regulators can produce information together. Regulators learn about the new technology, while firms learn how to demonstrate compliance under modified, bespoke rules. However, sandboxes prove inappropriate when primary constraints involve insufficient funding or early-stage technical uncertainty rather than regulatory barriers, when existing frameworks already adequately address the innovation, or when consumer protection risks from regulatory flexibility exceed potential benefits. The mechanism also fails when regulatory agencies lack sufficient supervisory capacity for intensive monitoring or when systemic risks warrant comprehensive evaluation rather than experimental deployment.
+    cbp_view_recommendations_for_uk: >
+      Regulatory sandboxes are likely to be most effective in tightly regulated sectors, where regulatory uncertainty may be particularly strong, and around [term:TRL] 7, where regulatory uncertainty plays a greater role in impeding further development. The effectiveness of sandboxes can be improved via active efforts to diffuse learnings across the regulator and relevant industries, including to firms which do not enter the sandbox. This can be achieved by having regulators transparently report learnings.
+    further_reading:
+      - title: "Regulatory Sandboxes and Fintech Funding: Evidence from the UK"
+        url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3727816"
+      - title: "The Sandbox Paradox: Balancing the Need to Facilitate Innovation with the Risk of Regulatory Privilege"
+        url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3561860"
+      - title: "Regulatory sandboxes: Do they speed up innovation in energy? - ScienceDirect"
+        url: "https://www.sciencedirect.com/science/article/pii/S0301421523002410"
+      - title: "Regulatory sandboxes in artificial intelligence"
+        url: "https://www.oecd.org/en/publications/regulatory-sandboxes-in-artificial-intelligence_8f80a0e6-en.html"
+    tags:
+      objectives:
+        - support_adoption_new_technologies
+        - support_applied_rd_commercialisation
+        - solve_government_challenges
+        - support_sme_innovation
+      innovation_stage:
+        - demonstration
+        - deployment
+      sectors:
+        - cross_sector
+      targeting:
+        - sector_specific
+        - technology_specific
+        - firm_size
+      timeline:
+        - short_term_outcomes
+
+  - name: "Innovation Loans"
+    id: "innovation_loans"
+    overall_assessment: >
+      Targeted tool that supports firms to bring prototypes to market and works best for [term:SMEs], manufacturing, and late-stage innovation.
+    how_it_works:
+      description: >
+        Public bodies extend below‑market loans to firms to support R&D. Innovation loans usually focus on innovative SMEs and late-stage R&D. Applicants are competitively assessed on innovation quality and commercialisation potential. [term:Innovate UK] currently runs an Innovation Loans programme focused on SMEs.
+      mechanism: >
+        Public bodies provide loans with below-market interest rates to competitively selected firms, primarily SMEs, to support late-stage R&D and commercialisation activities. Innovate UK lends between £100,000 and £1 million, ranging from 17% to 100% of project value, with a maximum term of 7 years.
+      complexity: "High"
+      complexity_details: >
+        Requires credit assessment, technical due diligence and portfolio risk management.
+      flexibility: "Low"
+      flexibility_details: >
+        Loans extend over multiple years, limiting the ability to rapidly pivot funding towards alternative uses, but new loans can be shaped to new priorities.
+    effectiveness_and_uk_impact:
+      evidence_summary: >
+        Limited causal evidence available. The signalling effect of receiving a state-backed loan may support follow-on funding from the private sector, but it is unclear whether this is causal, or increases or simply reallocates overall private investment. One study of Spanish firms shows [term:crowding-in] effects.
+      what_works:
+        - "Supporting SMEs increases the probability of crowding-in private R&D investment compared to supporting large firms."
+        - "Supporting manufacturing-focused businesses helps to crowd-in more private R&D investment."
+        - "Rigorous technical assessment aligns resources with commercially promising innovation paths."
+        - "For SMEs, grants may complement loans, crowding-in additional private R&D investment."
+      what_doesnt_work:
+        - "Loan terms where repayment is linked to revenue instead of profit, combined with permissive forgiveness terms, may create a [term:moral hazard] effect that incentivises firms to avoid commercialisation."
+      time_to_impact: >
+        The crowding-in of private R&D investment can happen within the first year of the loan.
+    targetability:
+      overall_assessment: >
+        Excellent targeting capability across all dimensions: sectoral, technological, regional, and firm type.
+      sectoral:
+        level: "High"
+        details: "Innovation loans can be restricted to firms in specific sectors, and benefits for manufacturing firms are likely to be greater."
+      technological:
+        level: "High"
+        details: "Innovation loans can be restricted to late stage technologies ([term:TRL] 6-8) where benefits are likely to be greater."
+      regional:
+        level: "High"
+        details: "Innovation loans could be restricted to firms in specific regions."
+      by_firm_type:
+        level: "High"
+        details: "Innovation loans could be restricted to SMEs, where benefits are larger."
+    economic_analysis: >
+      Innovation loans address capital market imperfections that arise from information gaps between innovators and lenders. Due to information asymmetry, traditional financial institutions often lack the specialist expertise to accurately assess the technical merit and commercial potential of innovative projects. This leads them to undervalue these projects, resulting in credit rationing and a financing gap in the ecosystem.
+
+
+      However, this tool requires government agencies to adopt sophisticated banking capabilities, including portfolio risk management, credit assessment, and loan pricing mechanisms that balance additionality against implicit subsidy effects. Unlike grants, loan programmes demand substantial capital deployment and ongoing monitoring systems to manage default risks while ensuring programme sustainability. This administrative complexity means the mechanism proves economically efficient only when financing constraints constitute the primary barrier, as opposed to insufficient commercial incentives, and when the scale of intervention justifies the considerable institutional infrastructure required for effective portfolio management.
+    cbp_view_recommendations_for_uk: >
+      Innovation loans are likely to be most effective for supporting SMEs, manufacturing firms, and technologies around TRL 6-8 to cover finance gaps for scaling, regulatory validation, and reaching the market. Effectiveness can be improved by not linking repayment to turnover and by avoiding permissive forgiveness terms. For SMEs, grants may complement loans to help crowd-in additional private R&D investment.
+    further_reading:
+      - title: "Evaluation of innovation loans: follow-on interim report – UKRI"
+        url: "https://www.ukri.org/publications/evaluation-of-innovation-loans-follow-on-interim-report/"
+      - title: "Are R&D Loans Relevant for Supporting Industrial R&D: The Case of TTGV in Turkey"
+        url: "https://dergipark.org.tr/tr/download/article-file/2175942"
+      - title: "Publicly-Funded R&D Programs and Survival of Patents"
+        url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1762027"
+      - title: "Commercialization of Patents and External Financing During the R&D-Phase"
+        url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1017781"
+      - title: "Impact of low-interest credits on business RD expenditures: Spanish firms and CDTI loans for RD projects"
+        url: "https://mpra.ub.uni-muenchen.de/44221/2/MPRA_paper_44221.pdf"
+      - title: "Subsidies or loans? Evaluating the impact of R&D support programmes - ScienceDirect"
+        url: "https://www.sciencedirect.com/science/article/abs/pii/S0048733317300811"
+    tags:
+      objectives:
+        - support_sme_innovation
+        - support_applied_rd_commercialisation
+        - support_growth_driving_sectors
+      innovation_stage:
+        - development
+        - demonstration
+      sectors:
+        - manufacturing
+        - cross_sector
+      delivery_mechanism:
+        - innovation_loan
+      targeting:
+        - sector_specific
+        - technology_specific
+        - regional
+        - firm_size
+      timeline:
+        - short_term_outcomes
+
+  - name: "Grants for Collaborative R&D"
+    id: "grants_for_collaborative_rd"
+    overall_assessment: >
+      A powerful targeted tool for de-risking innovation. The UK should continue to foster a diversity of collaborative R&D grant types, with the majority targeted towards sectors and technologies to drive UK comparative advantage and increase growth and security.
+    how_it_works:
+      description: >
+        Collaboration between businesses and academia is supported by R&D grants that require collaboration as part of their terms and conditions. Collaborations benefit all parties, with academics addressing real-world problems and gaining access to new skills, data or equipment, while businesses de-risk and stimulate innovation and drive technology progress across all [term:TRL]s. Collaborative R&D grants are often targeted, though the level of specificity varies from sector through to specific technologies, technical challenges, and TRL stage. Co-investment, most often [term:match-funding], from the lead business is almost always required.
+      mechanism: >
+        Requires collaboration between multiple partners (typically business and academia) and co-investment as part of the grant's conditions. The grants can be designed with varying levels of specificity to target different sectors, technologies, or challenges.
+      complexity: "Moderate"
+      complexity_details: >
+        Varies depending on the extent to which the funding is targeted to specific challenges and the number of partners involved.
+      flexibility: "High"
+      flexibility_details: >
+        Funding is locked in for the duration of awarded projects, but new funding calls can be designed to pivot resources towards emerging strategic priorities.
+    effectiveness_and_uk_impact:
+      evidence_summary: >
+        There is an extensive body of UK and international evidence on firms’ benefits from collaborative R&D, though there is limited specificity on the type of collaborative R&D.
+      what_works:
+        - "The literature generally supports a positive relationship between public support for collaborative R&D, innovation, and firms’ growth."
+        - "In a UK context, collaborative R&D grants yield considerably higher returns than other grant types within [term:Innovate UK]'s portfolio."
+        - "Companies involved in collaborative R&D are more likely to experience growth and a positive impact on innovative activities."
+        - "Due to match-funding requirements, private sector [term:leverage] is often significant; the UK’s £2.82 billion investment in the Industrial Strategy Challenge Fund received match funding of £4.65 billion, which is forecast to reach £8.19 billion by 2025."
+        - "Impacts are greater for smaller firms and those in high-tech manufacturing and knowledge-intensive sectors."
+      what_doesnt_work:
+        - "Tensions can arise over intellectual property; if not addressed early, negotiating ownership, licensing terms, and publication rights can be slow, complicated, and sometimes derail projects."
+        - "The scarcity of funding opportunities could risk the formation of tokenistic collaborations."
+        - "Complex, multi-year, multi-million pound programmes come with a significant administrative burden that can add cost and slow progress."
+        - "Timelines can be misaligned, with industry wishing to operate at a pace faster than the grant application process allows."
+      time_to_impact: >
+        Variable, depending on which TRL the grant targets.
+    targetability:
+      overall_assessment: >
+        Very strong targeting capability, particularly for sectors, technologies, and firm types, with moderate regional control.
+      sectoral:
+        level: "High"
+        details: "Can target specific sectors."
+      technological:
+        level: "High"
+        details: "Can target specific technologies and technology challenges."
+      regional:
+        level: "Moderate"
+        details: "Could be targeted by region."
+      by_firm_type:
+        level: "High"
+        details: "Can target by firm size."
+    economic_analysis: >
+      This tool is designed to address multiple market failures simultaneously, primarily the coordination failures and knowledge spillover inefficiencies that prevent different types of organisations from working together effectively. For instance, universities may excel at research but lack commercial expertise, while businesses may have market knowledge but underinvest in early-stage R&D.
+
+
+      Collaborative grants create an incentive structure that bridges these institutional boundaries, encouraging the risk-sharing and knowledge transfer needed to solve complex problems. However, the mechanism frequently fails when coordination costs exceed collaboration benefits, when complex intellectual property negotiations create insurmountable partnership barriers, or when fundamental differences in institutional timelines and success metrics prevent effective knowledge transfer. The tool proves inappropriate when innovation challenges can be adequately addressed through single-institution approaches or when misaligned incentive structures between academic and commercial partners undermine programme objectives.
+    cbp_view_recommendations_for_uk: >
+      Collaborative R&D is a powerful tool for de-risking innovation, capitalising on the UK's excellent research base, and increasing progress towards commercialisation across all TRLs. The UK should continue to foster a diversity of collaborative R&D grant types, with the majority targeted towards sectors and technologies to drive UK comparative advantage and increase growth and security. Administration of targeted grants should be through expert leaders with sufficient levels of autonomy. Greater connections to policymakers to highlight current and future challenges from industry could accelerate market readiness and adoption. There is clear demand for responsive, non-targeted collaborative R&D grants and CBP encourages Innovate UK to act swiftly to fill the strategic gap left by the termination of Smart Grants.
+    further_reading:
+      - title: "Assessing the business performance effects of receiving publicly-funded science, research and innovation grants, Vanino et al, ERC, 2017"
+        url: "https://www.enterpriseresearch.ac.uk/wp-content/uploads/2017/10/ERC-ResPap61-VaninoRoperBecker-revised-V3.3.pdf"
+      - title: "Innovate UK Grants and R&D Returns: Impact on Business and Economy, Dinos & Vorley, Innovation Caucus, 2023"
+        url: "https://innovationcaucus.co.uk/app/uploads/2023/11/Innovate-UK-Grants-and-RD-Returns-Impact-on-Business-and-Economy_FINAL.pdf"
+      - title: "The Contribution of Innovate UK to UK Firm Growth and Performance: 1.An Analysis of Innovate UK Applicants for Funding, Cowling et al, Innovation and Research Caucus, 2025"
+        url: "https://innovation-research-caucus-uploads.s3.amazonaws.com/production/uploads/2025/01/The-Contribution-of-IUK-to-UK-Firm-Growth-and-Performance.report-Jan-2025-FINAL-v4.pdf"
+      - title: "Interim Impact Evaluation of the Industrial Strategy Challenge Fund, Zakaria et al, Rand 2024"
+        url: "https://www.ukri.org/wp-content/uploads/2024/09/IUK-270924-ISCF-interim-impact-report_FINAL.pdf"
+    tags:
+      objectives:
+        - support_collaborative_rd
+        - support_growth_driving_sectors
+        - increase_business_rd_investment
+        - support_sme_innovation
+      innovation_stage:
+        - early_stage
+        - applied_research
+        - development
+        - demonstration
+        - deployment
+      sectors:
+        - cross_sector
+        - manufacturing
+      delivery_mechanism:
+        - collaborative_grant
+        - challenge_grant
+        - place_based_grant
+      targeting:
+        - sector_specific
+        - technology_specific
+        - regional
+        - firm_size
+        - business_focused
+        - academic_focused
+      timeline:
+        - long_term_innovation
+
+  - name: "Academic Research Grants"
+    id: "academic_research_grants"
+    overall_assessment: >
+      Academic research grants represent a selective, high-engagement intervention that enables governments to direct R&D investment toward specific priorities while maintaining scientific excellence through [term:peer review]. They excel at supporting high-risk, long-term research but come with high administrative costs. The tool's effectiveness hinges on balancing scientific autonomy with strategic direction.
+    how_it_works:
+      description: >
+        Research grants operate through a competitive allocation of public funds to universities and research institutions following a peer review evaluation. The UK system, managed by [term:UKRI], processes over 29,000 applications annually, awarding grants to successful applicants. Applications undergo a comprehensive assessment involving expert review and panel evaluation.
+      mechanism: >
+        Grants use the Full Economic Cost (FEC) methodology where the government typically funds 80% of project costs, with institutions contributing the remaining 20%. The bulk of the system operates under the Haldane principle, where research projects are evaluated by scientists through peer review rather than by political direction.
+      complexity: "High"
+      complexity_details: >
+        The application process involves multi-stage peer review with extensive documentation. Both funders and recipients face significant administrative burdens and compliance costs, with ongoing monitoring and reporting requirements throughout the grant's lifetime.
+      flexibility: "Moderate-High"
+      flexibility_details: >
+        Individual grants represent a fixed multi-year funding commitment. However, the portfolio is flexible annually; funding can be re-allocated to new, strategically directed calls to address evolving government priorities.
+    effectiveness_and_uk_impact:
+      evidence_summary: >
+        The evidence base is extensive, supported by major UK government reports, international studies, and a wide body of academic literature. Analysis often focuses on long-term economic impacts, knowledge [term:spillovers], and the tool's effectiveness in stimulating private R&D.
+      what_works:
+        - "Excels at supporting long-term, high-uncertainty projects that private investment cannot justify."
+        - "Investigator-led grants using pure excellence criteria can lead to breakthrough discoveries."
+        - "No systematic [term:crowding-out] of private R&D investment has been found; there is a complementary relationship, particularly for basic research."
+        - "Joint international review processes can reduce barriers to collaboration."
+        - "Fellowship schemes show positive long-term impacts on researcher careers and institutional capacity."
+      what_doesnt_work:
+        - "Significant compliance costs for institutions."
+        - "Declining success rates (with some UK schemes below 10%). Low success rates indicate that demand for funding far exceeds available supply, creating system inefficiencies and discouraging risk-taking."
+        - "Low inter-reviewer agreement and potential bias against highly novel research."
+        - "Fragmented data systems can limit strategic portfolio management and value-for-money assessments."
+      time_to_impact: >
+        Long (3-10 years). Immediate effects (0-2 years) include increased R&D spending and researcher employment. Medium-term effects (2-5 years) include scientific publications and human capital development. Long-term effects (5+ years) include knowledge spillovers and commercial applications.
+    targetability:
+      overall_assessment: >
+        Excellent targeting for sectors and technologies, but less effective for regional and firm-level targeting.
+      sectoral:
+        level: "High"
+        details: "Can be targeted through thematic calls, the disciplinary structure of Research Councils, and alignment with national strategies."
+      technological:
+        level: "High"
+        details: "Can be targeted by technology readiness level ([term:TRL]) and through cross-council initiatives for interdisciplinary challenges."
+      regional:
+        level: "Moderate"
+        details: "Targeting occurs indirectly via the geographic concentration of universities. A focus on excellence criteria may conflict with regional objectives."
+      by_firm_type:
+        level: "Moderate-Low"
+        details: "Primary focus is on universities, not firms. There is limited to no direct participation for [term:SMEs] in academic grants."
+    economic_analysis: >
+      These grants directly address the market's failure to produce fundamental research, which is often a 'public good'. This means the knowledge it creates is *non-rival* (i.e. one person's use doesn't prevent another's), and its benefits are hard to exclude others from. Because any single actor struggles to capture the full value of such research, private firms have a systematic incentive to underinvest, even though the long-term societal benefits are immense.
+
+
+      By using public funds and an expert-led peer review system to allocate them, these grants correct this underinvestment while supporting high-risk, exploratory science. However, the mechanism proves inappropriate when immediate commercial applications are required, when declining success rates discourage participation and risk-taking, or when substantial administrative overhead exceeds research value. The approach also fails when coordinated research programmes are necessary, as the investigator-led model may produce fragmented efforts lacking systematic integration for complex technical challenges.
+    cbp_view_recommendations_for_uk: >
+      This tool is best used for funding basic, high-risk, long-term research where market failures prevent adequate private investment. It is effective for addressing national challenges and building capability in emerging fields. It should be avoided for near-market development or when immediate commercial impact is required. For best results, grants should be combined with stable institutional funding and integrated with innovation support to link research to commercialisation.
+    further_reading:
+      - title: "UK Research and Innovation: providing support through grants"
+        author: "National Audit Office (May 2025)"
+        url: "https://www.nao.org.uk/reports/uk-research-and-innovation-providing-support-through-grants/"
+      - title: "Annual Report and Accounts 2024-25"
+        author: "UKRI (July 2025)"
+        url: "https://www.ukri.org/publications/annual-report-and-accounts-2024-to-2025/"
+      - title: "Data enhancement and analysis of the REF 2021 impact case studies"
+        author: "UKRI (November 2023)"
+        url: "https://www.ukri.org/news/data-enhancement-and-analysis-of-the-ref-2021-impact-case-studies/"
+      - title: "UKRI Independent Review"
+        author: "Grant, D. (July 2022)"
+        url: "https://assets.publishing.service.gov.uk/media/62cd4706d3bf7f30011985df/uk_research_and_innovation_independent_review_report.pdf"
+      - title: "Independent Review of the UK's Research, Development and Innovation Organisational Landscape"
+        author: "Nurse, P. (March 2023)"
+        url: "https://assets.publishing.service.gov.uk/media/6409fda2d3bf7f02fef8832b/rdi-landscape-review.pdf"
+      - title: "Independent Review of Research Bureaucracy"
+        author: "Tickell, A. (July 2022)"
+        url: "https://www.gov.uk/government/publications/review-of-research-bureaucracy"
+      - title: "The relationship between public and private R&D funding"
+        author: "Oxford Economics (July 2020)"
+        url: "https://assets.publishing.service.gov.uk/media/5efef09c3a6f4023c607da31/relationship-between-public-private-r-and-d-funding.pdf"
+    tags:
+      objectives:
+        - support_early_stage_research
+        - solve_government_challenges
+        - increase_high_skilled_talent_supply
+      innovation_stage:
+        - early_stage
+        - applied_research
+      sectors:
+        - cross_sector
+      delivery_mechanism:
+        - direct_grant
+      targeting:
+        - academic_focused
+        - sector_specific
+        - technology_specific
+      timeline:
+        - long_term_innovation
+
+  - name: "Contracts for Innovation"
+    id: "contracts_for_innovation"
+    overall_assessment: >
+      This is an underutilised tool for pre-commercial procurement with evidenced benefits to the firms involved and scope for greater public sector impacts.
+    how_it_works:
+      description: >
+        Public sector organisations pose a problem statement and companies compete for contracts to develop R&D solutions, with the government acting as a lead customer. Contracts are typically phased, moving from feasibility to prototype development and finally to operational testing and procurement. It is primarily a pre-commercial procurement tool, as most competitions are at the feasibility phase. [term:Innovate UK] administers the competitions, with defence, health, and the devolved administrations being the greatest users of the tool.
+      mechanism: >
+        Innovate UK administers this scheme. It runs as a phased, competitive contract model for pre-commercial procurement where the government acts as a lead customer for R&D solutions to its own defined problems.
+      complexity: "High"
+      complexity_details: >
+        Requires extensive departmental administrative resource for success.
+      flexibility: "High"
+      flexibility_details: >
+        The phased contract model offers high flexibility, allowing for projects to be stopped before large sums are spent. This allows for rapid pivoting of resources away from unpromising R&D paths.
+    effectiveness_and_uk_impact:
+      evidence_summary: >
+        The positive impact of the Small Business Research Initiative (SBRI), a key example of this tool, is relatively well-evidenced at the firm level through a study with counterfactuals.
+      what_works:
+        - "An evaluation has calculated a benefit-cost ratio (BCR) in the range of 1.53 to 4.07 based on firm-level benefits alone."
+        - "Evidence for [term:additionality] is high, with [term:deadweight] perceived to be low; 92% of beneficiaries report full or partial additionality."
+      what_doesnt_work:
+        - "A key challenge is the limited traction the tool has had within many parts of the public sector due to structural and cultural barriers to innovation in procurement."
+        - "It is not clear whether the clear benefits to firms translate into benefits for the public sector through the procurement of the innovative solutions."
+        - "A disconnection between standard public procurement processes and the officials involved in the Contracts for Innovation is problematic."
+      time_to_impact: >
+        Firm-level benefits are seen within two years.
+    targetability:
+      overall_assessment: >
+        A moderately targeted tool, mainly defined by the public sector problems being addressed.
+      sectoral:
+        level: "Moderate"
+        details: "Targets specific problems identified by public sector organisations."
+      technological:
+        level: "Moderate"
+        details: "Targets specific problems identified by public sector organisations."
+      regional:
+        level: "Moderate"
+        details: "The devolved administrations make use of the tool to solve problems they face, but the recipients aren’t regionally targeted."
+      by_firm_type:
+        level: "Low"
+        details: "Any size firm can apply."
+    economic_analysis: >
+      This procurement-based tool addresses the challenge of aligning public sector needs with private sector innovation capacity. Its rationale is rooted in the government's unique position as a large-scale, risk-tolerant lead customer for innovations that may not have an immediate commercial market.
+
+
+      The mechanism works by de-risking the development of customised solutions that solve specific public sector problems, providing funding and clear demand signals for niche products not adequately addressed by existing commercial offerings. However, the approach proves inappropriate when adequate commercial solutions already exist, when procurement challenges stem from regulatory rather than technological constraints, or when public sector organisations lack institutional capacity for effective innovation adoption. The mechanism also fails when disconnection between innovation programmes and operational procurement creates implementation barriers that prevent realisation of development investments, undermining the primary justification for public funding.
+    cbp_view_recommendations_for_uk: >
+      Contracts for Innovation is an underutilised tool for pre-commercial procurement with evidenced benefits to the firms involved and scope for greater public sector impacts. To maximise its potential, its use needs to be scaled within public sector organisations, requiring promotion, best practice sharing, and potentially targets for use. Additionally, for appropriate innovative solutions, there should be a clearly supported pathway to commercialisation and public procurement.
+    further_reading:
+      - title: "An Evaluation of the Small Business Research Initiative (SBRI) Report"
+        author: "Steer economic development, 2022"
+        url: "https://www.ukri.org/wp-content/uploads/2022/05/UKRI-130522-AnEvaluationoftheSBRIJanuary2022-WEB-FINAL.pdf"
+      - title: "Two Decades of the Small Business Research Initiative (SBRI)"
+        author: "University of Cambridge, 2021"
+        url: "https://www.ciip.group.cam.ac.uk/wp-content/uploads/2023/09/2021-05-04-SBRIdiscussionnote.pdf"
+    tags:
+      objectives:
+        - solve_government_challenges
+        - create_markets_for_innovation
+        - support_sme_innovation
+      innovation_stage:
+        - applied_research
+        - development
+        - demonstration
+      sectors:
+        - cross_sector
+      delivery_mechanism:
+        - innovation_procurement
+      targeting:
+        - sector_specific
+        - technology_specific
+        - regional
+      timeline:
+        - short_term_outcomes
+
+  - name: "Technology and Innovation Centres"
+    id: "technology_and_innovation_centres"
+    overall_assessment: >
+      Technology and Innovation Centres are large investments that are most effective when focused on sectors and technologies with strong industrial potential where progress depends on R&D which is being held back by high costs or risks associated with specialist R&D facilities, equipment and expertise.
+    how_it_works:
+      description: >
+        Technology and Innovation Centres (TICs) facilitate R&D across mid-high [term:TRL]s by providing access to specialist R&D facilities, equipment and expertise, primarily to businesses. Each Centre is focused on a particular sector or technology. Most are independent not-for-profit private organisations, with public investment funding their establishment, and then ongoing operating costs based on the German [term:Fraunhofer] ‘thirds’ model with a third coming from core government funding, a third from collaborative R&D, and a third from commercial activities. The Centres are often co-located with universities to facilitate collaborative R&D and bridge academic and industrial research. In the UK, the main TICs are the [term:Catapult Centres], which receive support from the UK government, and Scotland’s Innovation Centres and the Fraunhofer Centre for Applied Photonics, which receive support from the Scottish Government.
+      mechanism: >
+        Provides businesses with shared access to specialist R&D facilities, equipment, and expertise to de-risk innovation, particularly across mid-to-high TRLs. TICs typically operate as independent, not-for-profit organisations with a mixed public-private funding model.
+      complexity: "Moderate"
+      complexity_details: >
+        Complex to establish, but once operating, complexity should reduce and be in the hands of expert skilled TIC leaders.
+      flexibility: "Low"
+      flexibility_details: >
+        Low flexibility in the short-to-medium term. TICs require significant, long-term core funding commitments (e.g., 5- to 10-year cycles) to remain stable and strategically effective. Pivoting this core funding is difficult without undermining viability.
+    effectiveness_and_uk_impact:
+      evidence_summary: >
+        There is limited publicly available comparative quantitative evidence on the performance of UK TICs. However, qualitative findings suggest businesses would not have undertaken activities without the involvement of the Catapult Centres.
+      what_works:
+        - "Firms engaging with Catapult Centres show strong positive impacts, especially in employment, growing nearly 16% faster over six years. Effects are greatest for service, high-tech, and smaller firms."
+        - "Facilitating collaborative R&D and acting as trusted intermediaries."
+        - "Providing access to expertise and state-of-the-art physical infrastructures."
+        - "Being able to pursue strategic long-horizon initiatives and fast-response projects in parallel."
+        - "Being located near to the relevant industries is also likely to be important."
+      what_doesnt_work:
+        - "Unclear strategic focus, which adds duplication and unhelpful competition to the innovation landscape."
+        - "When access to specialist physical infrastructure is not the main mode of operation, and consultancy and policy activities are."
+        - "Accessibility models that [term:SMEs] find overpriced and terms and conditions that are hard to work with."
+        - "Poorly designed [term:KPIs] with perverse incentives and an imbalance of assessment and long-term stable funding."
+      time_to_impact: >
+        Limited evidence. One evaluation looked at the period 3-6 years post-engagement with the centres.
+    targetability:
+      overall_assessment: >
+        Highly targeted by sector and technology, with location driven by industrial clusters rather than regional policy objectives.
+      sectoral:
+        level: "High"
+        details: "TICs are focused on a particular sector or technology."
+      technological:
+        level: "High"
+        details: "TICs are focused on a particular sector or technology."
+      regional:
+        level: "Low"
+        details: "The location of relevant industrial activities should be driving the regional location of a TIC, which would be expected to result in regional benefits."
+      by_firm_type:
+        level: "Moderate"
+        details: "Can target by firm size."
+    economic_analysis: >
+      These centres address a coordination failure related to the high capital cost and risk of accessing specialised R&D infrastructure and expertise. Individual firms, particularly SMEs, often cannot justify the enormous expense of building their own cutting-edge testing facilities or demonstration environments, which can stall the innovation process.
+
+
+      Centres solve this by acting as shared, open-access infrastructure that pools resources and risk while facilitating knowledge spillovers and reducing transaction costs. However, the mechanism fails when insufficient industrial demand exists to sustain operations, when innovation challenges can be adequately served through existing market mechanisms, or when coordination costs between diverse stakeholders exceed the benefits generated through co-location. The approach also proves inappropriate when technological focus areas lack clear infrastructure requirements that justify substantial capital investment, or when basic research activities would be better suited to university environments.
+    cbp_view_recommendations_for_uk: >
+      Technology and Innovation Centres work best for sectors and technologies where progress is dependent on R&D, where there is industry with the capability for R&D and innovation, but where progress is held back as the R&D activities are too costly or risky for individual firms to develop alone. This is primarily due to the need for critical infrastructure, such as specialised equipment, testing facilities, or demonstration environments. They work best when strategically co-located within existing industry clusters, engaging with a mix of SMEs, academia, and corporates, and where the innovation challenge lies in scaling or commercialising technologies rather than basic research.
+    further_reading:
+      - title: "Evaluating the medium-term business performance effects of engaging with Catapults"
+        author: "Vanino & Roper, 2023"
+        url: "https://www.enterpriseresearch.ac.uk/publications/evaluating-the-medium-term-business-performance-effects-of-engaging-with-catapults-a-propensity-score-matching-difference-in-difference-study/"
+      - title: "Catapult Network Welcomes New Report Demonstrating Catapult Impact"
+        author: "Catapult Network"
+        url: "https://catapult.org.uk/catapult-network-welcomes-new-report-demonstrating-catapult-impact/"
+      - title: "Impact evaluation of Offshore Renewable Energy Catapult"
+        author: "Frontier Economics, 2024"
+        url: "https://www.frontier-economics.com/uk/en/news-and-insights/news/news-article-i21592-impact-evaluation-of-offshore-renewable-energy-catapult/"
+      - title: "Compound Semiconductor Applications Catapult Impact Evaluation Report"
+        author: "Harlow Consulting, 2024"
+        url: "https://csa.catapult.org.uk/news-insights/insights/impact-evaluation-report/"
+      - title: "Catapult Network Review 2021"
+        author: "BEIS, 2021"
+        url: "https://www.gov.uk/government/publications/catapult-network-review-2021-how-the-uks-catapults-can-strengthen-research-and-development-capacity"
+      - title: "Catapults: bridging the gap between research and industry"
+        author: "House of Lords Science and Technology Committee, 2021"
+        url: "https://committees.parliament.uk/work/804/the-contribution-of-innovation-catapults-to-delivering-the-rd-roadmap/publications/"
+    tags:
+      objectives:
+        - develop_innovation_clusters
+        - support_growth_driving_sectors
+        - support_applied_rd_commercialisation
+        - drive_regional_economic_growth
+      innovation_stage:
+        - development
+        - demonstration
+        - deployment
+      sectors:
+        - cross_sector
+        - manufacturing
+        - energy
+      delivery_mechanism:
+        - place_based_grant
+      targeting:
+        - sector_specific
+        - technology_specific
+        - regional
+        - firm_size
+      timeline:
+        - long_term_innovation

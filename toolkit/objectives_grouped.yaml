@@ -1,0 +1,92 @@
+objective_groups:
+  - group: "Business investment and commercialisation"
+    objectives:
+      - name: "Increase business R&D investment"
+        tag: "increase_business_rd_investment"
+        description: "Stimulate private sector investment in research and development activities to foster innovation and economic growth."
+        notes: "Achieving this often involves a mix of financial incentives, like tax relief, and creating a stable economic environment that encourages long-term planning. Consideration should be given to the balance between broad support and targeted interventions for specific sectors. A trade-off can be the cost to the Exchequer versus the potential for future economic returns and ensuring that incentives genuinely drive additional R&D, rather than subsidising existing plans."
+        related_tools: ["r_d_tax_reliefs", "innovation_grants_for_business"]
+
+      - name: "Support SME innovation"
+        tag: "support_sme_innovation"
+        description: "Enhance the innovation capacity of Small and Medium-sized Enterprises (SMEs) by providing targeted support and resources."
+        notes: "SMEs often require more than just funding; access to expertise, simplified administrative processes, and support for navigating complex regulatory landscapes are vital. It's important to tailor support to the diverse needs of SMEs, from start-ups to established businesses. A potential trade-off is the administrative effort required to reach a large number of small firms versus focusing resources on fewer, potentially higher-growth, companies."
+        related_tools: ["r_d_tax_reliefs", "innovation_grants_for_business", "contracts_for_innovation", "skilled_immigration"]
+
+      - name: "Support applied R&D commercialisation"
+        tag: "support_applied_rd_commercialisation"
+        description: "Facilitate the translation of applied research findings into commercially viable products, processes, and services."
+        notes: "This involves bridging the 'valley of death' between research and market-ready products through mechanisms like proof-of-concept funding, access to testing facilities, and business mentoring. Understanding market needs is critical. A trade-off can be ensuring that public support doesn't crowd out private investment or unduly favour certain companies."
+        related_tools: ["innovation_grants_for_business"]
+
+      - name: "Support adoption of new technologies"
+        tag: "support_adoption_new_technologies"
+        description: "Encourage and facilitate the uptake and integration of new and advanced technologies by businesses and other organisations to improve productivity and competitiveness."
+        notes: "This often requires addressing barriers such as lack of awareness, skills gaps, implementation costs, and perceived risks. Demonstration projects and advice services can be effective. Consideration should be given to ensuring benefits are widely shared and that adoption doesn't exacerbate digital divides. The trade-off is the cost of support programmes versus the potential productivity gains across the economy."
+        related_tools: []
+
+  - group: "Research and talent system"
+    objectives:
+      - name: "Support early-stage research"
+        tag: "support_early_stage_research"
+        description: "Encourage foundational research and exploration of new scientific and technological frontiers."
+        notes: "This requires a high tolerance for risk and an acceptance that many projects may not yield immediate commercial results. Protecting academic freedom and investigator-led research is important. The trade-off is between funding purely curiosity-driven research with uncertain long-term pay-offs and directing funds towards research with more foreseeable applications."
+        related_tools: ["innovation_inducement_prizes", "skilled_immigration"]
+
+      - name: "Support collaborative R&D"
+        tag: "support_collaborative_rd"
+        description: "Promote joint research and development projects between different organisations, such as businesses, universities, and research institutions, to share knowledge and resources."
+        notes: "Effective collaboration requires clear frameworks for intellectual property ownership and benefit sharing. Building trust and facilitating networking between diverse partners is key. Consideration should be given to the potential for 'free-rider' issues or ensuring that collaborations genuinely add value beyond what individual entities could achieve. The trade-off might be the complexity of managing multi-partner projects against the potential for more impactful, interdisciplinary breakthroughs."
+        related_tools: []
+
+      - name: "Increase high-skilled talent supply"
+        tag: "increase_high_skilled_talent_supply"
+        description: "Expand the availability of people with advanced education, training, and expertise in areas critical for innovation and economic growth."
+        notes: "This involves long-term investment in education and skills training, from schools through to universities and vocational pathways, as well as attracting and retaining international talent. Collaboration with industry to define skills needs is essential. The trade-off is the significant time lag between investment in education and seeing the impact on the workforce, versus the immediate need for skilled individuals in a fast-changing economy."
+        related_tools: ["skilled_immigration"]
+
+  - group: "Strategic and government-directed innovation"
+    objectives:
+      - name: "Solve government challenges"
+        tag: "solve_government_challenges"
+        description: "Utilise innovation to address specific challenges faced by public sector bodies and improve public services."
+        notes: "This can involve challenge prizes, innovation partnerships with the private sector, or adopting new technologies within government. A culture of experimentation and risk-taking within the public sector is beneficial. The trade-off is the potential for public funds to be spent on unproven solutions versus the opportunity to deliver better public services more efficiently."
+        related_tools: ["innovation_inducement_prizes", "contracts_for_innovation"]
+
+      - name: "Create markets for innovation"
+        tag: "create_markets_for_innovation"
+        description: "Establish or shape markets for novel products and services, de-risking private investment in innovative ventures."
+        notes: "Public procurement can be a powerful tool, as can outcome-based regulation or the use of standards to drive demand for innovative solutions. It's important to design these interventions carefully to avoid unintended consequences or creating artificial markets. The trade-off is the potential for higher initial costs in public spending or regulation, versus the long-term benefits of a more innovative economy."
+        related_tools: ["advance_market_commitments", "contracts_for_innovation"]
+
+      - name: "Strengthen economic security"
+        tag: "strengthen_economic_security"
+        description: "Build resilience in the national economy through strategic technological and industrial development."
+        notes: "This involves diversifying supply chains, investing in domestic capabilities for essential goods and services, and protecting critical national infrastructure. It's crucial to balance security concerns with the benefits of international trade and collaboration. A trade-off can be increased costs for consumers or businesses if domestic production is less efficient than global alternatives, weighed against reduced vulnerability to external shocks."
+        related_tools: ["advance_market_commitments", "skilled_immigration"]
+
+      - name: "Accelerate net zero innovation"
+        tag: "accelerate_net_zero_innovation"
+        description: "Drive the development and deployment of technologies to support the transition to a net-zero economy."
+        notes: "This demands a multi-faceted approach including R&D funding, clear regulatory signals, carbon pricing, and public investment in enabling infrastructure. Consideration of public acceptance and ensuring a 'just transition' for affected industries and communities is vital. The trade-off is often the significant upfront investment required against the long-term environmental and economic benefits, and the risk of backing technologies that don't become viable."
+        related_tools: ["advance_market_commitments"]
+
+  - group: "Place and sector development"
+    objectives:
+      - name: "Support growth-driving sectors"
+        tag: "support_growth_driving_sectors"
+        description: "Provide targeted assistance to industries identified as having high potential to expand and contribute significantly to overall economic growth."
+        notes: "Identifying future growth sectors requires robust analysis and foresight, avoiding 'picking winners' without a clear rationale. Policy should be adaptable as sectors evolve. The main trade-off is the risk of misallocating resources if predictions are incorrect or if support creates market distortions, versus the potential for accelerated growth in key areas."
+        related_tools: []
+
+      - name: "Drive regional economic growth"
+        tag: "drive_regional_economic_growth"
+        description: "Stimulate economic development and prosperity in specific geographic areas within the country, aiming to reduce regional disparities."
+        notes: "Approaches can include investing in local infrastructure, skills development tailored to regional strengths, and empowering local leadership. It's important to build on existing assets and avoid a one-size-fits-all policy. A trade-off can be the equitable distribution of resources across all regions versus concentrating investment in areas with the perceived highest growth potential to achieve national impact."
+        related_tools: []
+
+      - name: "Develop innovation clusters"
+        tag: "develop_innovation_clusters"
+        description: "Foster the growth of geographically concentrated networks of interconnected businesses, suppliers, research institutions, and other organisations in particular fields to spur innovation and economic development."
+        notes: "Successful clusters often emerge organically but can be supported by strategic investment in shared infrastructure, facilitating networking, and attracting anchor institutions. It's crucial to ensure inclusivity and avoid creating isolated pockets of prosperity. The trade-off involves long-term commitment and patience, as clusters take time to mature, versus the desire for quick wins."
+        related_tools: []
