@@ -1857,6 +1857,16 @@ body.is-preload #footer {
   color: #ff0034;
 }
 
+/* TikTok */
+.fa-tiktok:hover {
+  color: #020202;
+}
+
+/* Spotify */
+.fa-spotify:hover {
+  color: #15b169;
+}
+
 /* GitHub */
 .fa-github:hover {
   color: #000408;
